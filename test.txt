@@ -1,0 +1,52 @@
+nohup: ignoring input
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+Command Line Args: Namespace(config_file='configs/PascalVOC-detection/split1/faster_rcnn_R_101_FPN_ft_all1_2shot.yaml', dist_url='tcp://127.0.0.1:50157', end_iter=-1, eval_all=False, eval_during_train=False, eval_iter=-1, eval_only=True, machine_rank=0, num_gpus=2, num_machines=1, opts=None, resume=False, start_iter=-1)
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+[32m[07/10 18:12:07 detectron2]: [0mRank of current process: 0. World size: 2
+[32m[07/10 18:12:07 detectron2]: [0mCommand line arguments: Namespace(config_file='configs/PascalVOC-detection/split1/faster_rcnn_R_101_FPN_ft_all1_2shot.yaml', dist_url='tcp://127.0.0.1:50157', end_iter=-1, eval_all=False, eval_during_train=False, eval_iter=-1, eval_only=True, machine_rank=0, num_gpus=2, num_machines=1, opts=None, resume=False, start_iter=-1)
+[32m[07/10 18:12:07 detectron2]: [0mContents of args.config_file=configs/PascalVOC-detection/split1/faster_rcnn_R_101_FPN_ft_all1_2shot.yaml:
+_BASE_: "../../Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/weights/R-101.pkl"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 101
+  ROI_HEADS:
+    NUM_CLASSES: 20
+    OUTPUT_LAYER: "CosineSimOutputLayers"
+    FREEZE_FEAT: True
+  BACKBONE:
+    FREEZE: True
+  PROPOSAL_GENERATOR:
+    FREEZE: True
+INPUT:
+  MIN_SIZE_TRAIN: (480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800)
+  MIN_SIZE_TEST: 800
+DATASETS:
+  # TRAIN: ('voc_2007_trainval_all1_2shot',)
+  TRAIN: ('voc_2007_trainval_all1_2shot_seed4',)
+  TEST: ('voc_2007_val_all1',)
+SOLVER:
+  IMS_PER_BATCH: 32
+  BASE_LR: 0.001
+  STEPS: (7000,)
+  MAX_ITER: 8000
+  CHECKPOINT_PERIOD: 500
+  WARMUP_ITERS: 0
+OUTPUT_DIR: "checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel"
+[32m[07/10 18:12:07 detectron2]: [0mFull config saved to /home/zhanglibin/workspace/FSOD/few-shot-object-detection/checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/config.yaml
+[32m[07/10 18:12:07 d2.utils.env]: [0mUsing a generated random seed 7948839
+froze backbone parameters
+froze proposal generator parameters
+froze roi_box_head parameters
+[32m[07/10 18:12:08 fvcore.common.checkpoint]: [0mLoading checkpoint from checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_final.pth

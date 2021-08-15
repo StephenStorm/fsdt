@@ -1,0 +1,1160 @@
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+Command Line Args: Namespace(config_file='configs/PascalVOC-detection/split1/faster_rcnn_R_101_FPN_ft_all1_2shot.yaml', dist_url='tcp://127.0.0.1:50157', end_iter=-1, eval_all=False, eval_during_train=False, eval_iter=-1, eval_only=False, machine_rank=0, num_gpus=2, num_machines=1, opts=None, resume=False, start_iter=-1)
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+[32m[07/09 23:05:50 detectron2]: [0mRank of current process: 0. World size: 2
+[32m[07/09 23:05:50 detectron2]: [0mCommand line arguments: Namespace(config_file='configs/PascalVOC-detection/split1/faster_rcnn_R_101_FPN_ft_all1_2shot.yaml', dist_url='tcp://127.0.0.1:50157', end_iter=-1, eval_all=False, eval_during_train=False, eval_iter=-1, eval_only=False, machine_rank=0, num_gpus=2, num_machines=1, opts=None, resume=False, start_iter=-1)
+[32m[07/09 23:05:50 detectron2]: [0mContents of args.config_file=configs/PascalVOC-detection/split1/faster_rcnn_R_101_FPN_ft_all1_2shot.yaml:
+_BASE_: "../../Base-RCNN-FPN.yaml"
+MODEL:
+  WEIGHTS: "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/weights/R-101.pkl"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 101
+  ROI_HEADS:
+    NUM_CLASSES: 20
+    OUTPUT_LAYER: "CosineSimOutputLayers"
+    FREEZE_FEAT: True
+  BACKBONE:
+    FREEZE: True
+  PROPOSAL_GENERATOR:
+    FREEZE: True
+INPUT:
+  MIN_SIZE_TRAIN: (480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800)
+  MIN_SIZE_TEST: 800
+DATASETS:
+  # TRAIN: ('voc_2007_trainval_all1_2shot',)
+  TRAIN: ('voc_2007_trainval_all1_2shot_seed4',)
+  TEST: ('voc_2007_test_all1',)
+SOLVER:
+  IMS_PER_BATCH: 32
+  BASE_LR: 0.001
+  STEPS: (7000,)
+  MAX_ITER: 8000
+  CHECKPOINT_PERIOD: 500
+  WARMUP_ITERS: 0
+OUTPUT_DIR: "checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel"
+[32m[07/09 23:05:50 detectron2]: [0mFull config saved to /home/zhanglibin/workspace/FSOD/few-shot-object-detection/checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/config.yaml
+[32m[07/09 23:05:50 d2.utils.env]: [0mUsing a generated random seed 50572825
+froze backbone parameters
+froze proposal generator parameters
+froze roi_box_head parameters
+--------------------------------------------------------------------
+voc_2007_trainval_all1_2shot_seed4
+datasets/VOC2007
+all_2shot_split_1_trainval
+['aeroplane', 'bicycle', 'boat', 'bottle', 'car', 'cat', 'chair', 'diningtable', 'dog', 'horse', 'person', 'pottedplant', 'sheep', 'train', 'tvmonitor', 'bird', 'bus', 'cow', 'motorbike', 'sofa']
+--------------------------------------------------------------------
+[32m[07/09 23:05:51 d2.data.build]: [0mRemoved 0 images with no usable annotations. 40 images left.
+[32m[07/09 23:05:51 d2.data.build]: [0mDistribution of instances among all 20 categories:
+[36m|  category  | #instances   |  category   | #instances   |  category   | #instances   |
+|:----------:|:-------------|:-----------:|:-------------|:-----------:|:-------------|
+| aeroplane  | 2            |   bicycle   | 2            |    boat     | 2            |
+|   bottle   | 2            |     car     | 2            |     cat     | 2            |
+|   chair    | 2            | diningtable | 2            |     dog     | 2            |
+|   horse    | 2            |   person    | 2            | pottedplant | 2            |
+|   sheep    | 2            |    train    | 2            |  tvmonitor  | 2            |
+|    bird    | 2            |     bus     | 2            |     cow     | 2            |
+| motorbike  | 2            |    sofa     | 2            |             |              |
+|   total    | 40           |             |              |             |              |[0m
+[32m[07/09 23:05:51 d2.data.dataset_mapper]: [0m[DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(480, 512, 544, 576, 608, 640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[32m[07/09 23:05:51 d2.data.build]: [0mUsing training sampler TrainingSampler
+[32m[07/09 23:05:51 d2.data.common]: [0mSerializing 40 elements to byte tensors and concatenating them all ...
+[32m[07/09 23:05:51 d2.data.common]: [0mSerialized dataset takes 0.01 MiB
+[32m[07/09 23:05:51 fvcore.common.checkpoint]: [0mLoading checkpoint from /home/zhanglibin/workspace/FSOD/few-shot-object-detection/weights/R-101.pkl
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mRemapping C2 weights ......
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv1.norm.bias            loaded from res2_0_branch2a_bn_b        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv1.norm.weight          loaded from res2_0_branch2a_bn_s        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv1.weight               loaded from res2_0_branch2a_w           of shape (64, 64, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv2.norm.bias            loaded from res2_0_branch2b_bn_b        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv2.norm.weight          loaded from res2_0_branch2b_bn_s        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv2.weight               loaded from res2_0_branch2b_w           of shape (64, 64, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv3.norm.bias            loaded from res2_0_branch2c_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv3.norm.weight          loaded from res2_0_branch2c_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.conv3.weight               loaded from res2_0_branch2c_w           of shape (256, 64, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.shortcut.norm.bias         loaded from res2_0_branch1_bn_b         of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.shortcut.norm.weight       loaded from res2_0_branch1_bn_s         of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.0.shortcut.weight            loaded from res2_0_branch1_w            of shape (256, 64, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv1.norm.bias            loaded from res2_1_branch2a_bn_b        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv1.norm.weight          loaded from res2_1_branch2a_bn_s        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv1.weight               loaded from res2_1_branch2a_w           of shape (64, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv2.norm.bias            loaded from res2_1_branch2b_bn_b        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv2.norm.weight          loaded from res2_1_branch2b_bn_s        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv2.weight               loaded from res2_1_branch2b_w           of shape (64, 64, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv3.norm.bias            loaded from res2_1_branch2c_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv3.norm.weight          loaded from res2_1_branch2c_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.1.conv3.weight               loaded from res2_1_branch2c_w           of shape (256, 64, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv1.norm.bias            loaded from res2_2_branch2a_bn_b        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv1.norm.weight          loaded from res2_2_branch2a_bn_s        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv1.weight               loaded from res2_2_branch2a_w           of shape (64, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv2.norm.bias            loaded from res2_2_branch2b_bn_b        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv2.norm.weight          loaded from res2_2_branch2b_bn_s        of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv2.weight               loaded from res2_2_branch2b_w           of shape (64, 64, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv3.norm.bias            loaded from res2_2_branch2c_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv3.norm.weight          loaded from res2_2_branch2c_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res2.2.conv3.weight               loaded from res2_2_branch2c_w           of shape (256, 64, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv1.norm.bias            loaded from res3_0_branch2a_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv1.norm.weight          loaded from res3_0_branch2a_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv1.weight               loaded from res3_0_branch2a_w           of shape (128, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv2.norm.bias            loaded from res3_0_branch2b_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv2.norm.weight          loaded from res3_0_branch2b_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv2.weight               loaded from res3_0_branch2b_w           of shape (128, 128, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv3.norm.bias            loaded from res3_0_branch2c_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv3.norm.weight          loaded from res3_0_branch2c_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.conv3.weight               loaded from res3_0_branch2c_w           of shape (512, 128, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.shortcut.norm.bias         loaded from res3_0_branch1_bn_b         of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.shortcut.norm.weight       loaded from res3_0_branch1_bn_s         of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.0.shortcut.weight            loaded from res3_0_branch1_w            of shape (512, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv1.norm.bias            loaded from res3_1_branch2a_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv1.norm.weight          loaded from res3_1_branch2a_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv1.weight               loaded from res3_1_branch2a_w           of shape (128, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv2.norm.bias            loaded from res3_1_branch2b_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv2.norm.weight          loaded from res3_1_branch2b_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv2.weight               loaded from res3_1_branch2b_w           of shape (128, 128, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv3.norm.bias            loaded from res3_1_branch2c_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv3.norm.weight          loaded from res3_1_branch2c_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.1.conv3.weight               loaded from res3_1_branch2c_w           of shape (512, 128, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv1.norm.bias            loaded from res3_2_branch2a_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv1.norm.weight          loaded from res3_2_branch2a_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv1.weight               loaded from res3_2_branch2a_w           of shape (128, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv2.norm.bias            loaded from res3_2_branch2b_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv2.norm.weight          loaded from res3_2_branch2b_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv2.weight               loaded from res3_2_branch2b_w           of shape (128, 128, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv3.norm.bias            loaded from res3_2_branch2c_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv3.norm.weight          loaded from res3_2_branch2c_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.2.conv3.weight               loaded from res3_2_branch2c_w           of shape (512, 128, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv1.norm.bias            loaded from res3_3_branch2a_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv1.norm.weight          loaded from res3_3_branch2a_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv1.weight               loaded from res3_3_branch2a_w           of shape (128, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv2.norm.bias            loaded from res3_3_branch2b_bn_b        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv2.norm.weight          loaded from res3_3_branch2b_bn_s        of shape (128,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv2.weight               loaded from res3_3_branch2b_w           of shape (128, 128, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv3.norm.bias            loaded from res3_3_branch2c_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv3.norm.weight          loaded from res3_3_branch2c_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res3.3.conv3.weight               loaded from res3_3_branch2c_w           of shape (512, 128, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv1.norm.bias            loaded from res4_0_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv1.norm.weight          loaded from res4_0_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv1.weight               loaded from res4_0_branch2a_w           of shape (256, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv2.norm.bias            loaded from res4_0_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv2.norm.weight          loaded from res4_0_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv2.weight               loaded from res4_0_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv3.norm.bias            loaded from res4_0_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv3.norm.weight          loaded from res4_0_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.conv3.weight               loaded from res4_0_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.shortcut.norm.bias         loaded from res4_0_branch1_bn_b         of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.shortcut.norm.weight       loaded from res4_0_branch1_bn_s         of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.0.shortcut.weight            loaded from res4_0_branch1_w            of shape (1024, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv1.norm.bias            loaded from res4_1_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv1.norm.weight          loaded from res4_1_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv1.weight               loaded from res4_1_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv2.norm.bias            loaded from res4_1_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv2.norm.weight          loaded from res4_1_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv2.weight               loaded from res4_1_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv3.norm.bias            loaded from res4_1_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv3.norm.weight          loaded from res4_1_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.1.conv3.weight               loaded from res4_1_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv1.norm.bias           loaded from res4_10_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv1.norm.weight         loaded from res4_10_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv1.weight              loaded from res4_10_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv2.norm.bias           loaded from res4_10_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv2.norm.weight         loaded from res4_10_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv2.weight              loaded from res4_10_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv3.norm.bias           loaded from res4_10_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv3.norm.weight         loaded from res4_10_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.10.conv3.weight              loaded from res4_10_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv1.norm.bias           loaded from res4_11_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv1.norm.weight         loaded from res4_11_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv1.weight              loaded from res4_11_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv2.norm.bias           loaded from res4_11_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv2.norm.weight         loaded from res4_11_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv2.weight              loaded from res4_11_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv3.norm.bias           loaded from res4_11_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv3.norm.weight         loaded from res4_11_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.11.conv3.weight              loaded from res4_11_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv1.norm.bias           loaded from res4_12_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv1.norm.weight         loaded from res4_12_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv1.weight              loaded from res4_12_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv2.norm.bias           loaded from res4_12_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv2.norm.weight         loaded from res4_12_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv2.weight              loaded from res4_12_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv3.norm.bias           loaded from res4_12_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv3.norm.weight         loaded from res4_12_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.12.conv3.weight              loaded from res4_12_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv1.norm.bias           loaded from res4_13_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv1.norm.weight         loaded from res4_13_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv1.weight              loaded from res4_13_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv2.norm.bias           loaded from res4_13_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv2.norm.weight         loaded from res4_13_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv2.weight              loaded from res4_13_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv3.norm.bias           loaded from res4_13_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv3.norm.weight         loaded from res4_13_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.13.conv3.weight              loaded from res4_13_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv1.norm.bias           loaded from res4_14_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv1.norm.weight         loaded from res4_14_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv1.weight              loaded from res4_14_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv2.norm.bias           loaded from res4_14_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv2.norm.weight         loaded from res4_14_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv2.weight              loaded from res4_14_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv3.norm.bias           loaded from res4_14_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv3.norm.weight         loaded from res4_14_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.14.conv3.weight              loaded from res4_14_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv1.norm.bias           loaded from res4_15_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv1.norm.weight         loaded from res4_15_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv1.weight              loaded from res4_15_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv2.norm.bias           loaded from res4_15_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv2.norm.weight         loaded from res4_15_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv2.weight              loaded from res4_15_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv3.norm.bias           loaded from res4_15_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv3.norm.weight         loaded from res4_15_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.15.conv3.weight              loaded from res4_15_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv1.norm.bias           loaded from res4_16_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv1.norm.weight         loaded from res4_16_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv1.weight              loaded from res4_16_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv2.norm.bias           loaded from res4_16_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv2.norm.weight         loaded from res4_16_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv2.weight              loaded from res4_16_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv3.norm.bias           loaded from res4_16_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv3.norm.weight         loaded from res4_16_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.16.conv3.weight              loaded from res4_16_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv1.norm.bias           loaded from res4_17_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv1.norm.weight         loaded from res4_17_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv1.weight              loaded from res4_17_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv2.norm.bias           loaded from res4_17_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv2.norm.weight         loaded from res4_17_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv2.weight              loaded from res4_17_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv3.norm.bias           loaded from res4_17_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv3.norm.weight         loaded from res4_17_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.17.conv3.weight              loaded from res4_17_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv1.norm.bias           loaded from res4_18_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv1.norm.weight         loaded from res4_18_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv1.weight              loaded from res4_18_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv2.norm.bias           loaded from res4_18_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv2.norm.weight         loaded from res4_18_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv2.weight              loaded from res4_18_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv3.norm.bias           loaded from res4_18_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv3.norm.weight         loaded from res4_18_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.18.conv3.weight              loaded from res4_18_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv1.norm.bias           loaded from res4_19_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv1.norm.weight         loaded from res4_19_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv1.weight              loaded from res4_19_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv2.norm.bias           loaded from res4_19_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv2.norm.weight         loaded from res4_19_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv2.weight              loaded from res4_19_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv3.norm.bias           loaded from res4_19_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv3.norm.weight         loaded from res4_19_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.19.conv3.weight              loaded from res4_19_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv1.norm.bias            loaded from res4_2_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv1.norm.weight          loaded from res4_2_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv1.weight               loaded from res4_2_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv2.norm.bias            loaded from res4_2_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv2.norm.weight          loaded from res4_2_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv2.weight               loaded from res4_2_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv3.norm.bias            loaded from res4_2_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv3.norm.weight          loaded from res4_2_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.2.conv3.weight               loaded from res4_2_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv1.norm.bias           loaded from res4_20_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv1.norm.weight         loaded from res4_20_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv1.weight              loaded from res4_20_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv2.norm.bias           loaded from res4_20_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv2.norm.weight         loaded from res4_20_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv2.weight              loaded from res4_20_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv3.norm.bias           loaded from res4_20_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv3.norm.weight         loaded from res4_20_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.20.conv3.weight              loaded from res4_20_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv1.norm.bias           loaded from res4_21_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv1.norm.weight         loaded from res4_21_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv1.weight              loaded from res4_21_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv2.norm.bias           loaded from res4_21_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv2.norm.weight         loaded from res4_21_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv2.weight              loaded from res4_21_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv3.norm.bias           loaded from res4_21_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv3.norm.weight         loaded from res4_21_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.21.conv3.weight              loaded from res4_21_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv1.norm.bias           loaded from res4_22_branch2a_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv1.norm.weight         loaded from res4_22_branch2a_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv1.weight              loaded from res4_22_branch2a_w          of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv2.norm.bias           loaded from res4_22_branch2b_bn_b       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv2.norm.weight         loaded from res4_22_branch2b_bn_s       of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv2.weight              loaded from res4_22_branch2b_w          of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv3.norm.bias           loaded from res4_22_branch2c_bn_b       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv3.norm.weight         loaded from res4_22_branch2c_bn_s       of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.22.conv3.weight              loaded from res4_22_branch2c_w          of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv1.norm.bias            loaded from res4_3_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv1.norm.weight          loaded from res4_3_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv1.weight               loaded from res4_3_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv2.norm.bias            loaded from res4_3_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv2.norm.weight          loaded from res4_3_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv2.weight               loaded from res4_3_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv3.norm.bias            loaded from res4_3_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv3.norm.weight          loaded from res4_3_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.3.conv3.weight               loaded from res4_3_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv1.norm.bias            loaded from res4_4_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv1.norm.weight          loaded from res4_4_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv1.weight               loaded from res4_4_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv2.norm.bias            loaded from res4_4_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv2.norm.weight          loaded from res4_4_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv2.weight               loaded from res4_4_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv3.norm.bias            loaded from res4_4_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv3.norm.weight          loaded from res4_4_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.4.conv3.weight               loaded from res4_4_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv1.norm.bias            loaded from res4_5_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv1.norm.weight          loaded from res4_5_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv1.weight               loaded from res4_5_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv2.norm.bias            loaded from res4_5_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv2.norm.weight          loaded from res4_5_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv2.weight               loaded from res4_5_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv3.norm.bias            loaded from res4_5_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv3.norm.weight          loaded from res4_5_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.5.conv3.weight               loaded from res4_5_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv1.norm.bias            loaded from res4_6_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv1.norm.weight          loaded from res4_6_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv1.weight               loaded from res4_6_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv2.norm.bias            loaded from res4_6_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv2.norm.weight          loaded from res4_6_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv2.weight               loaded from res4_6_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv3.norm.bias            loaded from res4_6_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv3.norm.weight          loaded from res4_6_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.6.conv3.weight               loaded from res4_6_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv1.norm.bias            loaded from res4_7_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv1.norm.weight          loaded from res4_7_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv1.weight               loaded from res4_7_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv2.norm.bias            loaded from res4_7_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv2.norm.weight          loaded from res4_7_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv2.weight               loaded from res4_7_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv3.norm.bias            loaded from res4_7_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv3.norm.weight          loaded from res4_7_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.7.conv3.weight               loaded from res4_7_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv1.norm.bias            loaded from res4_8_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv1.norm.weight          loaded from res4_8_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv1.weight               loaded from res4_8_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv2.norm.bias            loaded from res4_8_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv2.norm.weight          loaded from res4_8_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv2.weight               loaded from res4_8_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv3.norm.bias            loaded from res4_8_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv3.norm.weight          loaded from res4_8_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.8.conv3.weight               loaded from res4_8_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv1.norm.bias            loaded from res4_9_branch2a_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv1.norm.weight          loaded from res4_9_branch2a_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv1.weight               loaded from res4_9_branch2a_w           of shape (256, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv2.norm.bias            loaded from res4_9_branch2b_bn_b        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv2.norm.weight          loaded from res4_9_branch2b_bn_s        of shape (256,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv2.weight               loaded from res4_9_branch2b_w           of shape (256, 256, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv3.norm.bias            loaded from res4_9_branch2c_bn_b        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv3.norm.weight          loaded from res4_9_branch2c_bn_s        of shape (1024,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res4.9.conv3.weight               loaded from res4_9_branch2c_w           of shape (1024, 256, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv1.norm.bias            loaded from res5_0_branch2a_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv1.norm.weight          loaded from res5_0_branch2a_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv1.weight               loaded from res5_0_branch2a_w           of shape (512, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv2.norm.bias            loaded from res5_0_branch2b_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv2.norm.weight          loaded from res5_0_branch2b_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv2.weight               loaded from res5_0_branch2b_w           of shape (512, 512, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv3.norm.bias            loaded from res5_0_branch2c_bn_b        of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv3.norm.weight          loaded from res5_0_branch2c_bn_s        of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.conv3.weight               loaded from res5_0_branch2c_w           of shape (2048, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.shortcut.norm.bias         loaded from res5_0_branch1_bn_b         of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.shortcut.norm.weight       loaded from res5_0_branch1_bn_s         of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.0.shortcut.weight            loaded from res5_0_branch1_w            of shape (2048, 1024, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv1.norm.bias            loaded from res5_1_branch2a_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv1.norm.weight          loaded from res5_1_branch2a_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv1.weight               loaded from res5_1_branch2a_w           of shape (512, 2048, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv2.norm.bias            loaded from res5_1_branch2b_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv2.norm.weight          loaded from res5_1_branch2b_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv2.weight               loaded from res5_1_branch2b_w           of shape (512, 512, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv3.norm.bias            loaded from res5_1_branch2c_bn_b        of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv3.norm.weight          loaded from res5_1_branch2c_bn_s        of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.1.conv3.weight               loaded from res5_1_branch2c_w           of shape (2048, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv1.norm.bias            loaded from res5_2_branch2a_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv1.norm.weight          loaded from res5_2_branch2a_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv1.weight               loaded from res5_2_branch2a_w           of shape (512, 2048, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv2.norm.bias            loaded from res5_2_branch2b_bn_b        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv2.norm.weight          loaded from res5_2_branch2b_bn_s        of shape (512,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv2.weight               loaded from res5_2_branch2b_w           of shape (512, 512, 3, 3)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv3.norm.bias            loaded from res5_2_branch2c_bn_b        of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv3.norm.weight          loaded from res5_2_branch2c_bn_s        of shape (2048,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.res5.2.conv3.weight               loaded from res5_2_branch2c_w           of shape (2048, 512, 1, 1)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.stem.conv1.norm.bias              loaded from res_conv1_bn_b              of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.stem.conv1.norm.weight            loaded from res_conv1_bn_s              of shape (64,)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mbackbone.bottom_up.stem.conv1.weight                 loaded from conv1_w                     of shape (64, 3, 7, 7)
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mSome model parameters or buffers are not found in the checkpoint:
+  [34mbackbone.bottom_up.res2.0.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.0.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.0.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.0.shortcut.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.1.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.1.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.1.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.2.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.2.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res2.2.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.0.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.0.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.0.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.0.shortcut.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.1.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.1.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.1.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.2.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.2.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.2.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.3.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.3.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res3.3.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.0.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.0.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.0.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.0.shortcut.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.1.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.1.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.1.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.10.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.10.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.10.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.11.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.11.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.11.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.12.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.12.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.12.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.13.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.13.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.13.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.14.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.14.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.14.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.15.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.15.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.15.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.16.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.16.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.16.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.17.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.17.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.17.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.18.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.18.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.18.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.19.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.19.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.19.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.2.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.2.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.2.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.20.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.20.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.20.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.21.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.21.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.21.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.22.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.22.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.22.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.3.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.3.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.3.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.4.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.4.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.4.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.5.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.5.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.5.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.6.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.6.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.6.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.7.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.7.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.7.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.8.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.8.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.8.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.9.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.9.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res4.9.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.0.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.0.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.0.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.0.shortcut.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.1.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.1.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.1.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.2.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.2.conv2.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.res5.2.conv3.norm.{running_mean, running_var}[0m
+  [34mbackbone.bottom_up.stem.conv1.norm.{running_mean, running_var}[0m
+  [34mbackbone.fpn_lateral2.{bias, weight}[0m
+  [34mbackbone.fpn_lateral3.{bias, weight}[0m
+  [34mbackbone.fpn_lateral4.{bias, weight}[0m
+  [34mbackbone.fpn_lateral5.{bias, weight}[0m
+  [34mbackbone.fpn_output2.{bias, weight}[0m
+  [34mbackbone.fpn_output3.{bias, weight}[0m
+  [34mbackbone.fpn_output4.{bias, weight}[0m
+  [34mbackbone.fpn_output5.{bias, weight}[0m
+  [34mproposal_generator.anchor_generator.cell_anchors.{0, 1, 2, 3, 4}[0m
+  [34mproposal_generator.rpn_head.anchor_deltas.{bias, weight}[0m
+  [34mproposal_generator.rpn_head.conv.{bias, weight}[0m
+  [34mproposal_generator.rpn_head.objectness_logits.{bias, weight}[0m
+  [34mroi_heads.box_head.fc1.{bias, weight}[0m
+  [34mroi_heads.box_head.fc2.{bias, weight}[0m
+  [34mroi_heads.box_predictor.bbox_pred.{bias, weight}[0m
+  [34mroi_heads.box_predictor.cls_score.weight[0m
+[32m[07/09 23:05:51 d2.checkpoint.c2_model_loading]: [0mThe checkpoint state_dict contains keys that are not used by the model:
+  [35mfc1000_b[0m
+  [35mfc1000_w[0m
+  [35mres2_0_branch2a_b[0m
+  [35mres2_0_branch2b_b[0m
+  [35mres2_0_branch2c_b[0m
+  [35mres2_0_branch1_b[0m
+  [35mres2_1_branch2a_b[0m
+  [35mres2_1_branch2b_b[0m
+  [35mres2_1_branch2c_b[0m
+  [35mres2_2_branch2a_b[0m
+  [35mres2_2_branch2b_b[0m
+  [35mres2_2_branch2c_b[0m
+  [35mres3_0_branch2a_b[0m
+  [35mres3_0_branch2b_b[0m
+  [35mres3_0_branch2c_b[0m
+  [35mres3_0_branch1_b[0m
+  [35mres3_1_branch2a_b[0m
+  [35mres3_1_branch2b_b[0m
+  [35mres3_1_branch2c_b[0m
+  [35mres3_2_branch2a_b[0m
+  [35mres3_2_branch2b_b[0m
+  [35mres3_2_branch2c_b[0m
+  [35mres3_3_branch2a_b[0m
+  [35mres3_3_branch2b_b[0m
+  [35mres3_3_branch2c_b[0m
+  [35mres4_0_branch2a_b[0m
+  [35mres4_0_branch2b_b[0m
+  [35mres4_0_branch2c_b[0m
+  [35mres4_0_branch1_b[0m
+  [35mres4_1_branch2a_b[0m
+  [35mres4_1_branch2b_b[0m
+  [35mres4_1_branch2c_b[0m
+  [35mres4_10_branch2a_b[0m
+  [35mres4_10_branch2b_b[0m
+  [35mres4_10_branch2c_b[0m
+  [35mres4_11_branch2a_b[0m
+  [35mres4_11_branch2b_b[0m
+  [35mres4_11_branch2c_b[0m
+  [35mres4_12_branch2a_b[0m
+  [35mres4_12_branch2b_b[0m
+  [35mres4_12_branch2c_b[0m
+  [35mres4_13_branch2a_b[0m
+  [35mres4_13_branch2b_b[0m
+  [35mres4_13_branch2c_b[0m
+  [35mres4_14_branch2a_b[0m
+  [35mres4_14_branch2b_b[0m
+  [35mres4_14_branch2c_b[0m
+  [35mres4_15_branch2a_b[0m
+  [35mres4_15_branch2b_b[0m
+  [35mres4_15_branch2c_b[0m
+  [35mres4_16_branch2a_b[0m
+  [35mres4_16_branch2b_b[0m
+  [35mres4_16_branch2c_b[0m
+  [35mres4_17_branch2a_b[0m
+  [35mres4_17_branch2b_b[0m
+  [35mres4_17_branch2c_b[0m
+  [35mres4_18_branch2a_b[0m
+  [35mres4_18_branch2b_b[0m
+  [35mres4_18_branch2c_b[0m
+  [35mres4_19_branch2a_b[0m
+  [35mres4_19_branch2b_b[0m
+  [35mres4_19_branch2c_b[0m
+  [35mres4_2_branch2a_b[0m
+  [35mres4_2_branch2b_b[0m
+  [35mres4_2_branch2c_b[0m
+  [35mres4_20_branch2a_b[0m
+  [35mres4_20_branch2b_b[0m
+  [35mres4_20_branch2c_b[0m
+  [35mres4_21_branch2a_b[0m
+  [35mres4_21_branch2b_b[0m
+  [35mres4_21_branch2c_b[0m
+  [35mres4_22_branch2a_b[0m
+  [35mres4_22_branch2b_b[0m
+  [35mres4_22_branch2c_b[0m
+  [35mres4_3_branch2a_b[0m
+  [35mres4_3_branch2b_b[0m
+  [35mres4_3_branch2c_b[0m
+  [35mres4_4_branch2a_b[0m
+  [35mres4_4_branch2b_b[0m
+  [35mres4_4_branch2c_b[0m
+  [35mres4_5_branch2a_b[0m
+  [35mres4_5_branch2b_b[0m
+  [35mres4_5_branch2c_b[0m
+  [35mres4_6_branch2a_b[0m
+  [35mres4_6_branch2b_b[0m
+  [35mres4_6_branch2c_b[0m
+  [35mres4_7_branch2a_b[0m
+  [35mres4_7_branch2b_b[0m
+  [35mres4_7_branch2c_b[0m
+  [35mres4_8_branch2a_b[0m
+  [35mres4_8_branch2b_b[0m
+  [35mres4_8_branch2c_b[0m
+  [35mres4_9_branch2a_b[0m
+  [35mres4_9_branch2b_b[0m
+  [35mres4_9_branch2c_b[0m
+  [35mres5_0_branch2a_b[0m
+  [35mres5_0_branch2b_b[0m
+  [35mres5_0_branch2c_b[0m
+  [35mres5_0_branch1_b[0m
+  [35mres5_1_branch2a_b[0m
+  [35mres5_1_branch2b_b[0m
+  [35mres5_1_branch2c_b[0m
+  [35mres5_2_branch2a_b[0m
+  [35mres5_2_branch2b_b[0m
+  [35mres5_2_branch2c_b[0m
+  [35mconv1_b[0m
+froze backbone parameters
+froze proposal generator parameters
+froze roi_box_head parameters
+--------------------------------------------------------------------
+voc_2007_trainval_all1_2shot_seed4
+datasets/VOC2007
+all_2shot_split_1_trainval
+['aeroplane', 'bicycle', 'boat', 'bottle', 'car', 'cat', 'chair', 'diningtable', 'dog', 'horse', 'person', 'pottedplant', 'sheep', 'train', 'tvmonitor', 'bird', 'bus', 'cow', 'motorbike', 'sofa']
+--------------------------------------------------------------------
+[32m[07/09 23:05:52 d2.engine.train_loop]: [0mStarting training from iteration 0
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+** fvcore version of PathManager will be deprecated soon. **
+** Please migrate to the version in iopath repo. **
+https://github.com/facebookresearch/iopath 
+
+[32m[07/09 23:06:26 d2.utils.events]: [0m eta: 3:20:51  iter: 19  total_loss: 0.7236  loss_cls: 0.04322  loss_box_reg: 0.002973  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02509  time: 1.5193  data_time: 0.1835  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:06:57 d2.utils.events]: [0m eta: 3:21:40  iter: 39  total_loss: 0.6966  loss_cls: 0.02622  loss_box_reg: 0.003672  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0227  time: 1.5428  data_time: 0.1044  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:07:30 d2.utils.events]: [0m eta: 3:25:08  iter: 59  total_loss: 0.7007  loss_cls: 0.02834  loss_box_reg: 0.004056  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02495  time: 1.5745  data_time: 0.1077  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:08:02 d2.utils.events]: [0m eta: 3:29:02  iter: 79  total_loss: 0.6972  loss_cls: 0.0271  loss_box_reg: 0.003745  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.0218  time: 1.5852  data_time: 0.0994  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:08:35 d2.utils.events]: [0m eta: 3:30:54  iter: 99  total_loss: 0.6991  loss_cls: 0.02736  loss_box_reg: 0.003808  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02212  time: 1.5964  data_time: 0.0999  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:09:07 d2.utils.events]: [0m eta: 3:28:43  iter: 119  total_loss: 0.7024  loss_cls: 0.02639  loss_box_reg: 0.003282  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02466  time: 1.5969  data_time: 0.1073  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:09:35 d2.utils.events]: [0m eta: 3:28:11  iter: 139  total_loss: 0.6933  loss_cls: 0.02684  loss_box_reg: 0.003342  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02271  time: 1.5703  data_time: 0.0991  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:10:06 d2.utils.events]: [0m eta: 3:27:10  iter: 159  total_loss: 0.6952  loss_cls: 0.02571  loss_box_reg: 0.003211  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02123  time: 1.5684  data_time: 0.1021  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:10:39 d2.utils.events]: [0m eta: 3:27:54  iter: 179  total_loss: 0.695  loss_cls: 0.02507  loss_box_reg: 0.002663  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02024  time: 1.5751  data_time: 0.1035  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:11:11 d2.utils.events]: [0m eta: 3:27:42  iter: 199  total_loss: 0.6986  loss_cls: 0.02596  loss_box_reg: 0.003102  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02303  time: 1.5787  data_time: 0.1054  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:11:45 d2.utils.events]: [0m eta: 3:28:54  iter: 219  total_loss: 0.6978  loss_cls: 0.02692  loss_box_reg: 0.004157  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02354  time: 1.5872  data_time: 0.1033  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:12:18 d2.utils.events]: [0m eta: 3:28:43  iter: 239  total_loss: 0.702  loss_cls: 0.02597  loss_box_reg: 0.003841  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02724  time: 1.5935  data_time: 0.1028  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:12:50 d2.utils.events]: [0m eta: 3:27:57  iter: 259  total_loss: 0.6982  loss_cls: 0.02451  loss_box_reg: 0.002963  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02535  time: 1.5935  data_time: 0.1038  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:13:23 d2.utils.events]: [0m eta: 3:27:33  iter: 279  total_loss: 0.6965  loss_cls: 0.02605  loss_box_reg: 0.003714  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02011  time: 1.5966  data_time: 0.1044  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:13:53 d2.utils.events]: [0m eta: 3:26:18  iter: 299  total_loss: 0.6967  loss_cls: 0.0247  loss_box_reg: 0.003448  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02403  time: 1.5923  data_time: 0.1049  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:14:23 d2.utils.events]: [0m eta: 3:24:32  iter: 319  total_loss: 0.691  loss_cls: 0.0246  loss_box_reg: 0.003193  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02033  time: 1.5865  data_time: 0.1058  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:14:54 d2.utils.events]: [0m eta: 3:23:39  iter: 339  total_loss: 0.6951  loss_cls: 0.02416  loss_box_reg: 0.003162  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.0228  time: 1.5841  data_time: 0.1093  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:15:24 d2.utils.events]: [0m eta: 3:21:46  iter: 359  total_loss: 0.6953  loss_cls: 0.0242  loss_box_reg: 0.003382  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02286  time: 1.5778  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:15:56 d2.utils.events]: [0m eta: 3:21:14  iter: 379  total_loss: 0.6944  loss_cls: 0.02327  loss_box_reg: 0.002781  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02321  time: 1.5789  data_time: 0.1053  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:16:28 d2.utils.events]: [0m eta: 3:20:35  iter: 399  total_loss: 0.699  loss_cls: 0.0242  loss_box_reg: 0.003367  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02482  time: 1.5797  data_time: 0.1022  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:16:59 d2.utils.events]: [0m eta: 3:19:59  iter: 419  total_loss: 0.6938  loss_cls: 0.02182  loss_box_reg: 0.002298  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.0254  time: 1.5792  data_time: 0.0986  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:17:32 d2.utils.events]: [0m eta: 3:19:47  iter: 439  total_loss: 0.6952  loss_cls: 0.02337  loss_box_reg: 0.003153  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.0214  time: 1.5825  data_time: 0.1032  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:18:04 d2.utils.events]: [0m eta: 3:19:16  iter: 459  total_loss: 0.6934  loss_cls: 0.02303  loss_box_reg: 0.003191  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.023  time: 1.5824  data_time: 0.1026  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:18:37 d2.utils.events]: [0m eta: 3:18:59  iter: 479  total_loss: 0.6946  loss_cls: 0.02418  loss_box_reg: 0.003676  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02254  time: 1.5854  data_time: 0.1064  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:19:09 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0000499.pth
+[32m[07/09 23:19:10 d2.utils.events]: [0m eta: 3:18:43  iter: 499  total_loss: 0.6957  loss_cls: 0.02398  loss_box_reg: 0.003515  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02158  time: 1.5870  data_time: 0.1000  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:19:39 d2.utils.events]: [0m eta: 3:18:19  iter: 519  total_loss: 0.6963  loss_cls: 0.02351  loss_box_reg: 0.0035  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02567  time: 1.5817  data_time: 0.1028  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:20:11 d2.utils.events]: [0m eta: 3:18:03  iter: 539  total_loss: 0.6942  loss_cls: 0.02212  loss_box_reg: 0.00274  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02294  time: 1.5827  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:20:43 d2.utils.events]: [0m eta: 3:17:47  iter: 559  total_loss: 0.6888  loss_cls: 0.02184  loss_box_reg: 0.002781  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.01974  time: 1.5842  data_time: 0.0985  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:21:16 d2.utils.events]: [0m eta: 3:17:29  iter: 579  total_loss: 0.6936  loss_cls: 0.02169  loss_box_reg: 0.002815  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02252  time: 1.5855  data_time: 0.1077  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:21:48 d2.utils.events]: [0m eta: 3:17:13  iter: 599  total_loss: 0.6938  loss_cls: 0.02391  loss_box_reg: 0.003672  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02103  time: 1.5872  data_time: 0.0990  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:22:22 d2.utils.events]: [0m eta: 3:17:19  iter: 619  total_loss: 0.6997  loss_cls: 0.02263  loss_box_reg: 0.003278  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.023  time: 1.5896  data_time: 0.0958  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:22:54 d2.utils.events]: [0m eta: 3:16:31  iter: 639  total_loss: 0.6927  loss_cls: 0.02215  loss_box_reg: 0.003221  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02297  time: 1.5898  data_time: 0.1031  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:23:26 d2.utils.events]: [0m eta: 3:16:04  iter: 659  total_loss: 0.6959  loss_cls: 0.0225  loss_box_reg: 0.00365  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02386  time: 1.5907  data_time: 0.1053  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:23:58 d2.utils.events]: [0m eta: 3:15:27  iter: 679  total_loss: 0.7026  loss_cls: 0.02342  loss_box_reg: 0.00414  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02887  time: 1.5908  data_time: 0.1032  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:24:31 d2.utils.events]: [0m eta: 3:15:00  iter: 699  total_loss: 0.694  loss_cls: 0.02333  loss_box_reg: 0.004017  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02227  time: 1.5919  data_time: 0.1017  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:25:03 d2.utils.events]: [0m eta: 3:14:19  iter: 719  total_loss: 0.6929  loss_cls: 0.02313  loss_box_reg: 0.00423  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02193  time: 1.5922  data_time: 0.1009  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:25:35 d2.utils.events]: [0m eta: 3:13:51  iter: 739  total_loss: 0.6929  loss_cls: 0.02025  loss_box_reg: 0.00238  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02221  time: 1.5928  data_time: 0.1026  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:26:08 d2.utils.events]: [0m eta: 3:13:42  iter: 759  total_loss: 0.6964  loss_cls: 0.02393  loss_box_reg: 0.004788  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02517  time: 1.5947  data_time: 0.1031  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:26:41 d2.utils.events]: [0m eta: 3:13:17  iter: 779  total_loss: 0.6946  loss_cls: 0.02298  loss_box_reg: 0.003806  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02188  time: 1.5957  data_time: 0.1007  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:27:14 d2.utils.events]: [0m eta: 3:12:59  iter: 799  total_loss: 0.6919  loss_cls: 0.02265  loss_box_reg: 0.003753  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02249  time: 1.5970  data_time: 0.1065  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:27:46 d2.utils.events]: [0m eta: 3:12:26  iter: 819  total_loss: 0.6904  loss_cls: 0.02114  loss_box_reg: 0.002886  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02053  time: 1.5970  data_time: 0.0981  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:28:18 d2.utils.events]: [0m eta: 3:11:57  iter: 839  total_loss: 0.6911  loss_cls: 0.01991  loss_box_reg: 0.002314  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02162  time: 1.5974  data_time: 0.1025  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:28:50 d2.utils.events]: [0m eta: 3:11:25  iter: 859  total_loss: 0.6948  loss_cls: 0.02032  loss_box_reg: 0.00251  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02424  time: 1.5977  data_time: 0.0944  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:29:23 d2.utils.events]: [0m eta: 3:11:04  iter: 879  total_loss: 0.686  loss_cls: 0.02185  loss_box_reg: 0.003135  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.01812  time: 1.5990  data_time: 0.1037  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:29:52 d2.utils.events]: [0m eta: 3:10:32  iter: 899  total_loss: 0.6937  loss_cls: 0.0223  loss_box_reg: 0.003631  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.0229  time: 1.5954  data_time: 0.1045  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:30:24 d2.utils.events]: [0m eta: 3:09:57  iter: 919  total_loss: 0.6942  loss_cls: 0.02127  loss_box_reg: 0.00315  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02541  time: 1.5959  data_time: 0.1011  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:30:57 d2.utils.events]: [0m eta: 3:09:34  iter: 939  total_loss: 0.6948  loss_cls: 0.022  loss_box_reg: 0.00349  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02423  time: 1.5962  data_time: 0.1043  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:31:29 d2.utils.events]: [0m eta: 3:08:56  iter: 959  total_loss: 0.7  loss_cls: 0.0222  loss_box_reg: 0.00351  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02479  time: 1.5966  data_time: 0.1015  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:32:02 d2.utils.events]: [0m eta: 3:08:36  iter: 979  total_loss: 0.6936  loss_cls: 0.02164  loss_box_reg: 0.003453  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0211  time: 1.5975  data_time: 0.1066  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:32:34 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0000999.pth
+[32m[07/09 23:32:34 d2.utils.events]: [0m eta: 3:08:01  iter: 999  total_loss: 0.6929  loss_cls: 0.01983  loss_box_reg: 0.002556  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02545  time: 1.5978  data_time: 0.0987  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:33:06 d2.utils.events]: [0m eta: 3:07:42  iter: 1019  total_loss: 0.6925  loss_cls: 0.02202  loss_box_reg: 0.00356  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02283  time: 1.5978  data_time: 0.1006  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:33:38 d2.utils.events]: [0m eta: 3:07:02  iter: 1039  total_loss: 0.6883  loss_cls: 0.0215  loss_box_reg: 0.003202  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.0212  time: 1.5975  data_time: 0.1055  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:34:10 d2.utils.events]: [0m eta: 3:06:14  iter: 1059  total_loss: 0.699  loss_cls: 0.0212  loss_box_reg: 0.003348  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0283  time: 1.5974  data_time: 0.1070  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:34:42 d2.utils.events]: [0m eta: 3:06:01  iter: 1079  total_loss: 0.6929  loss_cls: 0.02059  loss_box_reg: 0.002941  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02238  time: 1.5979  data_time: 0.1058  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:35:15 d2.utils.events]: [0m eta: 3:05:32  iter: 1099  total_loss: 0.6921  loss_cls: 0.0208  loss_box_reg: 0.003382  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02038  time: 1.5985  data_time: 0.1031  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:35:46 d2.utils.events]: [0m eta: 3:05:00  iter: 1119  total_loss: 0.6925  loss_cls: 0.02054  loss_box_reg: 0.002981  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02274  time: 1.5978  data_time: 0.1035  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:36:20 d2.utils.events]: [0m eta: 3:04:33  iter: 1139  total_loss: 0.6919  loss_cls: 0.02081  loss_box_reg: 0.00296  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.0187  time: 1.5990  data_time: 0.1019  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:36:53 d2.utils.events]: [0m eta: 3:04:18  iter: 1159  total_loss: 0.6958  loss_cls: 0.02149  loss_box_reg: 0.003422  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0234  time: 1.5998  data_time: 0.1036  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:37:25 d2.utils.events]: [0m eta: 3:03:42  iter: 1179  total_loss: 0.6936  loss_cls: 0.02025  loss_box_reg: 0.003039  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02212  time: 1.6004  data_time: 0.0988  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:37:57 d2.utils.events]: [0m eta: 3:03:09  iter: 1199  total_loss: 0.6935  loss_cls: 0.02136  loss_box_reg: 0.003471  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02142  time: 1.6006  data_time: 0.1070  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:38:30 d2.utils.events]: [0m eta: 3:02:19  iter: 1219  total_loss: 0.6934  loss_cls: 0.0202  loss_box_reg: 0.002795  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02044  time: 1.6006  data_time: 0.1089  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:39:02 d2.utils.events]: [0m eta: 3:01:47  iter: 1239  total_loss: 0.6954  loss_cls: 0.02117  loss_box_reg: 0.003291  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02221  time: 1.6010  data_time: 0.1030  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:39:31 d2.utils.events]: [0m eta: 3:01:16  iter: 1259  total_loss: 0.6906  loss_cls: 0.02074  loss_box_reg: 0.003123  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02408  time: 1.5984  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:40:05 d2.utils.events]: [0m eta: 3:01:00  iter: 1279  total_loss: 0.6983  loss_cls: 0.02182  loss_box_reg: 0.003421  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02711  time: 1.5998  data_time: 0.1018  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:40:37 d2.utils.events]: [0m eta: 3:00:43  iter: 1299  total_loss: 0.6926  loss_cls: 0.02136  loss_box_reg: 0.003597  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02564  time: 1.6000  data_time: 0.1025  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:41:09 d2.utils.events]: [0m eta: 3:00:25  iter: 1319  total_loss: 0.692  loss_cls: 0.02045  loss_box_reg: 0.003006  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02482  time: 1.6001  data_time: 0.1014  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:41:42 d2.utils.events]: [0m eta: 2:59:58  iter: 1339  total_loss: 0.695  loss_cls: 0.01929  loss_box_reg: 0.002469  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02736  time: 1.6006  data_time: 0.1045  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:42:13 d2.utils.events]: [0m eta: 2:59:48  iter: 1359  total_loss: 0.6939  loss_cls: 0.02074  loss_box_reg: 0.003121  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02567  time: 1.6004  data_time: 0.1013  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:42:46 d2.utils.events]: [0m eta: 2:59:23  iter: 1379  total_loss: 0.6973  loss_cls: 0.02074  loss_box_reg: 0.003348  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02855  time: 1.6008  data_time: 0.1006  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:43:19 d2.utils.events]: [0m eta: 2:58:56  iter: 1399  total_loss: 0.6905  loss_cls: 0.02189  loss_box_reg: 0.003973  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.01925  time: 1.6014  data_time: 0.1029  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:43:52 d2.utils.events]: [0m eta: 2:58:28  iter: 1419  total_loss: 0.6932  loss_cls: 0.02099  loss_box_reg: 0.002636  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02439  time: 1.6019  data_time: 0.1071  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:44:24 d2.utils.events]: [0m eta: 2:57:52  iter: 1439  total_loss: 0.6969  loss_cls: 0.0212  loss_box_reg: 0.003447  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02531  time: 1.6023  data_time: 0.0966  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:44:57 d2.utils.events]: [0m eta: 2:57:40  iter: 1459  total_loss: 0.6905  loss_cls: 0.02136  loss_box_reg: 0.003752  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02145  time: 1.6027  data_time: 0.1048  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:45:29 d2.utils.events]: [0m eta: 2:56:47  iter: 1479  total_loss: 0.6916  loss_cls: 0.02039  loss_box_reg: 0.002995  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02472  time: 1.6028  data_time: 0.1064  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:46:01 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0001499.pth
+[32m[07/09 23:46:02 d2.utils.events]: [0m eta: 2:56:13  iter: 1499  total_loss: 0.691  loss_cls: 0.02018  loss_box_reg: 0.003084  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02284  time: 1.6029  data_time: 0.0989  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:46:34 d2.utils.events]: [0m eta: 2:55:42  iter: 1519  total_loss: 0.6948  loss_cls: 0.01993  loss_box_reg: 0.002969  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02674  time: 1.6032  data_time: 0.1069  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:47:07 d2.utils.events]: [0m eta: 2:55:10  iter: 1539  total_loss: 0.6933  loss_cls: 0.02169  loss_box_reg: 0.00418  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02441  time: 1.6038  data_time: 0.1019  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:47:40 d2.utils.events]: [0m eta: 2:54:39  iter: 1559  total_loss: 0.6907  loss_cls: 0.02017  loss_box_reg: 0.002945  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02263  time: 1.6041  data_time: 0.1025  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:48:13 d2.utils.events]: [0m eta: 2:54:15  iter: 1579  total_loss: 0.6905  loss_cls: 0.01992  loss_box_reg: 0.002765  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02218  time: 1.6047  data_time: 0.1039  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:48:46 d2.utils.events]: [0m eta: 2:53:48  iter: 1599  total_loss: 0.693  loss_cls: 0.02115  loss_box_reg: 0.003744  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02372  time: 1.6055  data_time: 0.1004  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:49:20 d2.utils.events]: [0m eta: 2:53:16  iter: 1619  total_loss: 0.6903  loss_cls: 0.01929  loss_box_reg: 0.002825  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02328  time: 1.6065  data_time: 0.0993  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:49:48 d2.utils.events]: [0m eta: 2:52:38  iter: 1639  total_loss: 0.6919  loss_cls: 0.0216  loss_box_reg: 0.003674  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02178  time: 1.6039  data_time: 0.1020  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:50:20 d2.utils.events]: [0m eta: 2:52:05  iter: 1659  total_loss: 0.6958  loss_cls: 0.01969  loss_box_reg: 0.003039  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02748  time: 1.6043  data_time: 0.1039  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:50:53 d2.utils.events]: [0m eta: 2:51:32  iter: 1679  total_loss: 0.6934  loss_cls: 0.02095  loss_box_reg: 0.003178  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0255  time: 1.6043  data_time: 0.0952  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:51:26 d2.utils.events]: [0m eta: 2:51:03  iter: 1699  total_loss: 0.6854  loss_cls: 0.01952  loss_box_reg: 0.003209  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02106  time: 1.6049  data_time: 0.1095  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:51:57 d2.utils.events]: [0m eta: 2:50:27  iter: 1719  total_loss: 0.6934  loss_cls: 0.02096  loss_box_reg: 0.003638  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02148  time: 1.6047  data_time: 0.1070  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:52:29 d2.utils.events]: [0m eta: 2:49:53  iter: 1739  total_loss: 0.6942  loss_cls: 0.02066  loss_box_reg: 0.003441  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02608  time: 1.6046  data_time: 0.1061  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:53:03 d2.utils.events]: [0m eta: 2:49:13  iter: 1759  total_loss: 0.6922  loss_cls: 0.0208  loss_box_reg: 0.00343  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02156  time: 1.6052  data_time: 0.1040  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:53:36 d2.utils.events]: [0m eta: 2:48:48  iter: 1779  total_loss: 0.6942  loss_cls: 0.02137  loss_box_reg: 0.00353  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02476  time: 1.6059  data_time: 0.1023  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:54:09 d2.utils.events]: [0m eta: 2:48:12  iter: 1799  total_loss: 0.6899  loss_cls: 0.02014  loss_box_reg: 0.00309  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02193  time: 1.6063  data_time: 0.1017  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:54:41 d2.utils.events]: [0m eta: 2:47:35  iter: 1819  total_loss: 0.6942  loss_cls: 0.02155  loss_box_reg: 0.003923  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.0238  time: 1.6064  data_time: 0.1032  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:55:14 d2.utils.events]: [0m eta: 2:47:10  iter: 1839  total_loss: 0.689  loss_cls: 0.01896  loss_box_reg: 0.002862  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.0227  time: 1.6067  data_time: 0.1048  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:55:46 d2.utils.events]: [0m eta: 2:46:34  iter: 1859  total_loss: 0.696  loss_cls: 0.02005  loss_box_reg: 0.002976  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02671  time: 1.6067  data_time: 0.0980  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:56:18 d2.utils.events]: [0m eta: 2:45:53  iter: 1879  total_loss: 0.6908  loss_cls: 0.01997  loss_box_reg: 0.002933  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02146  time: 1.6068  data_time: 0.1057  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:56:50 d2.utils.events]: [0m eta: 2:45:21  iter: 1899  total_loss: 0.6896  loss_cls: 0.02074  loss_box_reg: 0.003289  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.01966  time: 1.6069  data_time: 0.0982  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:57:23 d2.utils.events]: [0m eta: 2:45:00  iter: 1919  total_loss: 0.6956  loss_cls: 0.02044  loss_box_reg: 0.003185  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02722  time: 1.6071  data_time: 0.0998  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:57:55 d2.utils.events]: [0m eta: 2:44:27  iter: 1939  total_loss: 0.6937  loss_cls: 0.02139  loss_box_reg: 0.003043  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02444  time: 1.6071  data_time: 0.1025  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:58:28 d2.utils.events]: [0m eta: 2:43:59  iter: 1959  total_loss: 0.6951  loss_cls: 0.02238  loss_box_reg: 0.004495  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0288  time: 1.6074  data_time: 0.1058  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:59:00 d2.utils.events]: [0m eta: 2:43:09  iter: 1979  total_loss: 0.6902  loss_cls: 0.02018  loss_box_reg: 0.003218  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02239  time: 1.6074  data_time: 0.1006  lr: 0.001  max_mem: 11705M
+[32m[07/09 23:59:30 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0001999.pth
+[32m[07/09 23:59:30 d2.utils.events]: [0m eta: 2:42:50  iter: 1999  total_loss: 0.6945  loss_cls: 0.01997  loss_box_reg: 0.003213  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02508  time: 1.6061  data_time: 0.1068  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:00:02 d2.utils.events]: [0m eta: 2:42:27  iter: 2019  total_loss: 0.6894  loss_cls: 0.0202  loss_box_reg: 0.00339  loss_rpn_cls: 0.645  loss_rpn_loc: 0.0222  time: 1.6062  data_time: 0.0992  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:00:35 d2.utils.events]: [0m eta: 2:42:00  iter: 2039  total_loss: 0.6965  loss_cls: 0.02013  loss_box_reg: 0.003155  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02406  time: 1.6063  data_time: 0.1052  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:01:08 d2.utils.events]: [0m eta: 2:41:38  iter: 2059  total_loss: 0.6897  loss_cls: 0.02016  loss_box_reg: 0.003111  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02254  time: 1.6067  data_time: 0.1030  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:01:41 d2.utils.events]: [0m eta: 2:41:08  iter: 2079  total_loss: 0.6954  loss_cls: 0.01976  loss_box_reg: 0.003068  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02301  time: 1.6073  data_time: 0.1039  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:02:14 d2.utils.events]: [0m eta: 2:40:33  iter: 2099  total_loss: 0.6973  loss_cls: 0.02151  loss_box_reg: 0.003832  loss_rpn_cls: 0.6456  loss_rpn_loc: 0.02652  time: 1.6075  data_time: 0.0996  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:02:46 d2.utils.events]: [0m eta: 2:40:03  iter: 2119  total_loss: 0.6904  loss_cls: 0.0207  loss_box_reg: 0.003637  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02157  time: 1.6076  data_time: 0.1049  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:03:19 d2.utils.events]: [0m eta: 2:39:30  iter: 2139  total_loss: 0.6943  loss_cls: 0.02076  loss_box_reg: 0.003302  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02444  time: 1.6080  data_time: 0.1008  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:03:51 d2.utils.events]: [0m eta: 2:38:55  iter: 2159  total_loss: 0.6956  loss_cls: 0.02058  loss_box_reg: 0.003088  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02484  time: 1.6080  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:04:24 d2.utils.events]: [0m eta: 2:38:27  iter: 2179  total_loss: 0.6935  loss_cls: 0.02185  loss_box_reg: 0.00415  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02477  time: 1.6082  data_time: 0.1003  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:04:57 d2.utils.events]: [0m eta: 2:37:56  iter: 2199  total_loss: 0.6969  loss_cls: 0.0193  loss_box_reg: 0.002755  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.0278  time: 1.6085  data_time: 0.1000  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:05:30 d2.utils.events]: [0m eta: 2:37:25  iter: 2219  total_loss: 0.6884  loss_cls: 0.0204  loss_box_reg: 0.002818  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02205  time: 1.6089  data_time: 0.1010  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:06:03 d2.utils.events]: [0m eta: 2:37:14  iter: 2239  total_loss: 0.6931  loss_cls: 0.02023  loss_box_reg: 0.003312  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02506  time: 1.6094  data_time: 0.1082  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:06:36 d2.utils.events]: [0m eta: 2:36:48  iter: 2259  total_loss: 0.6882  loss_cls: 0.01875  loss_box_reg: 0.002627  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02206  time: 1.6098  data_time: 0.1048  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:07:09 d2.utils.events]: [0m eta: 2:36:10  iter: 2279  total_loss: 0.6932  loss_cls: 0.01934  loss_box_reg: 0.002487  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02506  time: 1.6102  data_time: 0.1066  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:07:42 d2.utils.events]: [0m eta: 2:35:40  iter: 2299  total_loss: 0.6952  loss_cls: 0.02088  loss_box_reg: 0.003551  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02449  time: 1.6105  data_time: 0.1012  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:08:15 d2.utils.events]: [0m eta: 2:35:22  iter: 2319  total_loss: 0.6933  loss_cls: 0.0184  loss_box_reg: 0.002489  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02758  time: 1.6108  data_time: 0.0996  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:08:47 d2.utils.events]: [0m eta: 2:34:40  iter: 2339  total_loss: 0.6931  loss_cls: 0.02  loss_box_reg: 0.00365  loss_rpn_cls: 0.6438  loss_rpn_loc: 0.02407  time: 1.6105  data_time: 0.0992  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:09:18 d2.utils.events]: [0m eta: 2:34:19  iter: 2359  total_loss: 0.6913  loss_cls: 0.01915  loss_box_reg: 0.002905  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02321  time: 1.6103  data_time: 0.1005  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:09:48 d2.utils.events]: [0m eta: 2:33:40  iter: 2379  total_loss: 0.6935  loss_cls: 0.02013  loss_box_reg: 0.00307  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02474  time: 1.6092  data_time: 0.1084  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:10:20 d2.utils.events]: [0m eta: 2:33:02  iter: 2399  total_loss: 0.6906  loss_cls: 0.01964  loss_box_reg: 0.002787  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.023  time: 1.6092  data_time: 0.1055  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:10:52 d2.utils.events]: [0m eta: 2:32:19  iter: 2419  total_loss: 0.697  loss_cls: 0.02006  loss_box_reg: 0.003841  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02392  time: 1.6092  data_time: 0.0992  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:11:25 d2.utils.events]: [0m eta: 2:31:46  iter: 2439  total_loss: 0.6886  loss_cls: 0.01983  loss_box_reg: 0.003304  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02166  time: 1.6094  data_time: 0.1081  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:11:57 d2.utils.events]: [0m eta: 2:31:03  iter: 2459  total_loss: 0.6936  loss_cls: 0.02099  loss_box_reg: 0.003563  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02484  time: 1.6094  data_time: 0.0933  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:12:30 d2.utils.events]: [0m eta: 2:30:46  iter: 2479  total_loss: 0.6981  loss_cls: 0.02143  loss_box_reg: 0.00417  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02649  time: 1.6098  data_time: 0.1047  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:13:02 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0002499.pth
+[32m[07/10 00:13:03 d2.utils.events]: [0m eta: 2:30:10  iter: 2499  total_loss: 0.6973  loss_cls: 0.02068  loss_box_reg: 0.003546  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02249  time: 1.6097  data_time: 0.1009  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:13:35 d2.utils.events]: [0m eta: 2:29:50  iter: 2519  total_loss: 0.6958  loss_cls: 0.02084  loss_box_reg: 0.003939  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02851  time: 1.6099  data_time: 0.0981  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:14:08 d2.utils.events]: [0m eta: 2:29:16  iter: 2539  total_loss: 0.6879  loss_cls: 0.01871  loss_box_reg: 0.002737  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02256  time: 1.6099  data_time: 0.1027  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:14:41 d2.utils.events]: [0m eta: 2:28:45  iter: 2559  total_loss: 0.6909  loss_cls: 0.01992  loss_box_reg: 0.003543  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.0196  time: 1.6103  data_time: 0.1002  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:15:13 d2.utils.events]: [0m eta: 2:28:07  iter: 2579  total_loss: 0.6889  loss_cls: 0.01909  loss_box_reg: 0.002515  loss_rpn_cls: 0.6438  loss_rpn_loc: 0.02162  time: 1.6105  data_time: 0.1020  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:15:46 d2.utils.events]: [0m eta: 2:27:29  iter: 2599  total_loss: 0.6875  loss_cls: 0.01894  loss_box_reg: 0.002829  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02338  time: 1.6106  data_time: 0.1051  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:16:19 d2.utils.events]: [0m eta: 2:26:41  iter: 2619  total_loss: 0.6923  loss_cls: 0.02039  loss_box_reg: 0.003764  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02357  time: 1.6107  data_time: 0.1044  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:16:51 d2.utils.events]: [0m eta: 2:26:19  iter: 2639  total_loss: 0.6886  loss_cls: 0.01962  loss_box_reg: 0.003058  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02084  time: 1.6108  data_time: 0.1009  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:17:23 d2.utils.events]: [0m eta: 2:25:45  iter: 2659  total_loss: 0.692  loss_cls: 0.01855  loss_box_reg: 0.003017  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02213  time: 1.6106  data_time: 0.1068  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:17:54 d2.utils.events]: [0m eta: 2:25:09  iter: 2679  total_loss: 0.6898  loss_cls: 0.01888  loss_box_reg: 0.002889  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02366  time: 1.6104  data_time: 0.1002  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:18:27 d2.utils.events]: [0m eta: 2:24:36  iter: 2699  total_loss: 0.6915  loss_cls: 0.0196  loss_box_reg: 0.003325  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02357  time: 1.6104  data_time: 0.1026  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:18:59 d2.utils.events]: [0m eta: 2:24:05  iter: 2719  total_loss: 0.691  loss_cls: 0.01935  loss_box_reg: 0.003079  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.0225  time: 1.6103  data_time: 0.0975  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:19:27 d2.utils.events]: [0m eta: 2:23:37  iter: 2739  total_loss: 0.6878  loss_cls: 0.01806  loss_box_reg: 0.002687  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.01919  time: 1.6090  data_time: 0.1065  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:20:00 d2.utils.events]: [0m eta: 2:23:00  iter: 2759  total_loss: 0.6939  loss_cls: 0.02033  loss_box_reg: 0.003489  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02385  time: 1.6092  data_time: 0.0958  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:20:33 d2.utils.events]: [0m eta: 2:22:25  iter: 2779  total_loss: 0.6898  loss_cls: 0.01918  loss_box_reg: 0.002456  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02512  time: 1.6094  data_time: 0.1040  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:21:07 d2.utils.events]: [0m eta: 2:21:56  iter: 2799  total_loss: 0.6942  loss_cls: 0.01987  loss_box_reg: 0.003667  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02658  time: 1.6100  data_time: 0.1095  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:21:39 d2.utils.events]: [0m eta: 2:21:24  iter: 2819  total_loss: 0.6892  loss_cls: 0.01796  loss_box_reg: 0.002614  loss_rpn_cls: 0.6439  loss_rpn_loc: 0.02604  time: 1.6099  data_time: 0.1046  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:22:11 d2.utils.events]: [0m eta: 2:20:49  iter: 2839  total_loss: 0.6939  loss_cls: 0.01898  loss_box_reg: 0.003124  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02412  time: 1.6101  data_time: 0.1047  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:22:43 d2.utils.events]: [0m eta: 2:20:17  iter: 2859  total_loss: 0.6879  loss_cls: 0.01993  loss_box_reg: 0.00312  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02222  time: 1.6099  data_time: 0.1045  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:23:16 d2.utils.events]: [0m eta: 2:19:45  iter: 2879  total_loss: 0.694  loss_cls: 0.0192  loss_box_reg: 0.003026  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02524  time: 1.6101  data_time: 0.1043  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:23:48 d2.utils.events]: [0m eta: 2:19:12  iter: 2899  total_loss: 0.691  loss_cls: 0.0205  loss_box_reg: 0.003965  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02483  time: 1.6100  data_time: 0.1058  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:24:19 d2.utils.events]: [0m eta: 2:18:38  iter: 2919  total_loss: 0.6915  loss_cls: 0.02069  loss_box_reg: 0.004262  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02422  time: 1.6099  data_time: 0.0971  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:24:52 d2.utils.events]: [0m eta: 2:18:07  iter: 2939  total_loss: 0.6907  loss_cls: 0.02007  loss_box_reg: 0.003498  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02366  time: 1.6101  data_time: 0.1085  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:25:24 d2.utils.events]: [0m eta: 2:17:32  iter: 2959  total_loss: 0.6913  loss_cls: 0.01915  loss_box_reg: 0.003176  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02033  time: 1.6100  data_time: 0.1062  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:25:57 d2.utils.events]: [0m eta: 2:17:02  iter: 2979  total_loss: 0.693  loss_cls: 0.01971  loss_box_reg: 0.00324  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02626  time: 1.6102  data_time: 0.1076  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:26:29 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0002999.pth
+[32m[07/10 00:26:30 d2.utils.events]: [0m eta: 2:16:27  iter: 2999  total_loss: 0.693  loss_cls: 0.01948  loss_box_reg: 0.00334  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02704  time: 1.6102  data_time: 0.1012  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:27:03 d2.utils.events]: [0m eta: 2:15:56  iter: 3019  total_loss: 0.691  loss_cls: 0.01856  loss_box_reg: 0.002972  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02252  time: 1.6105  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:27:35 d2.utils.events]: [0m eta: 2:15:24  iter: 3039  total_loss: 0.688  loss_cls: 0.01971  loss_box_reg: 0.003101  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02319  time: 1.6104  data_time: 0.1004  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:28:06 d2.utils.events]: [0m eta: 2:14:47  iter: 3059  total_loss: 0.6918  loss_cls: 0.0195  loss_box_reg: 0.003644  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02349  time: 1.6103  data_time: 0.1069  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:28:38 d2.utils.events]: [0m eta: 2:13:58  iter: 3079  total_loss: 0.6925  loss_cls: 0.01973  loss_box_reg: 0.003582  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02227  time: 1.6102  data_time: 0.1026  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:29:12 d2.utils.events]: [0m eta: 2:13:28  iter: 3099  total_loss: 0.6941  loss_cls: 0.02013  loss_box_reg: 0.003973  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02259  time: 1.6105  data_time: 0.1022  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:29:40 d2.utils.events]: [0m eta: 2:12:51  iter: 3119  total_loss: 0.6852  loss_cls: 0.01915  loss_box_reg: 0.00295  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.01998  time: 1.6091  data_time: 0.1080  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:30:13 d2.utils.events]: [0m eta: 2:12:20  iter: 3139  total_loss: 0.6868  loss_cls: 0.01991  loss_box_reg: 0.004081  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.01876  time: 1.6095  data_time: 0.1041  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:30:46 d2.utils.events]: [0m eta: 2:12:04  iter: 3159  total_loss: 0.6941  loss_cls: 0.01862  loss_box_reg: 0.002819  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02505  time: 1.6098  data_time: 0.1072  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:31:19 d2.utils.events]: [0m eta: 2:11:18  iter: 3179  total_loss: 0.6923  loss_cls: 0.01887  loss_box_reg: 0.003009  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02355  time: 1.6099  data_time: 0.1038  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:31:51 d2.utils.events]: [0m eta: 2:10:46  iter: 3199  total_loss: 0.6928  loss_cls: 0.0206  loss_box_reg: 0.004116  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02369  time: 1.6099  data_time: 0.1027  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:32:24 d2.utils.events]: [0m eta: 2:10:27  iter: 3219  total_loss: 0.6927  loss_cls: 0.02036  loss_box_reg: 0.004052  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02675  time: 1.6101  data_time: 0.1057  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:32:56 d2.utils.events]: [0m eta: 2:09:33  iter: 3239  total_loss: 0.6934  loss_cls: 0.01916  loss_box_reg: 0.002769  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02484  time: 1.6101  data_time: 0.1040  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:33:28 d2.utils.events]: [0m eta: 2:08:49  iter: 3259  total_loss: 0.6894  loss_cls: 0.01925  loss_box_reg: 0.003399  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02233  time: 1.6101  data_time: 0.1063  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:34:01 d2.utils.events]: [0m eta: 2:08:16  iter: 3279  total_loss: 0.6928  loss_cls: 0.01974  loss_box_reg: 0.003801  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02353  time: 1.6102  data_time: 0.1010  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:34:33 d2.utils.events]: [0m eta: 2:07:43  iter: 3299  total_loss: 0.6901  loss_cls: 0.01864  loss_box_reg: 0.00262  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.0231  time: 1.6103  data_time: 0.1011  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:35:05 d2.utils.events]: [0m eta: 2:07:00  iter: 3319  total_loss: 0.6874  loss_cls: 0.01817  loss_box_reg: 0.002811  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02232  time: 1.6102  data_time: 0.1040  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:35:37 d2.utils.events]: [0m eta: 2:06:31  iter: 3339  total_loss: 0.6883  loss_cls: 0.01899  loss_box_reg: 0.003271  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02037  time: 1.6102  data_time: 0.1002  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:36:10 d2.utils.events]: [0m eta: 2:05:47  iter: 3359  total_loss: 0.6906  loss_cls: 0.0193  loss_box_reg: 0.003253  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02447  time: 1.6102  data_time: 0.1039  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:36:43 d2.utils.events]: [0m eta: 2:05:30  iter: 3379  total_loss: 0.6947  loss_cls: 0.01932  loss_box_reg: 0.003325  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02452  time: 1.6104  data_time: 0.1036  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:37:15 d2.utils.events]: [0m eta: 2:04:59  iter: 3399  total_loss: 0.6884  loss_cls: 0.01998  loss_box_reg: 0.003601  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02186  time: 1.6106  data_time: 0.0970  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:37:48 d2.utils.events]: [0m eta: 2:04:27  iter: 3419  total_loss: 0.6909  loss_cls: 0.01799  loss_box_reg: 0.002925  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02472  time: 1.6107  data_time: 0.1044  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:38:22 d2.utils.events]: [0m eta: 2:03:59  iter: 3439  total_loss: 0.6918  loss_cls: 0.01945  loss_box_reg: 0.003007  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02406  time: 1.6112  data_time: 0.1046  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:38:54 d2.utils.events]: [0m eta: 2:03:29  iter: 3459  total_loss: 0.6981  loss_cls: 0.02054  loss_box_reg: 0.003695  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02537  time: 1.6113  data_time: 0.1018  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:39:24 d2.utils.events]: [0m eta: 2:02:54  iter: 3479  total_loss: 0.69  loss_cls: 0.02017  loss_box_reg: 0.004232  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02418  time: 1.6104  data_time: 0.1008  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:39:56 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0003499.pth
+[32m[07/10 00:39:56 d2.utils.events]: [0m eta: 2:02:21  iter: 3499  total_loss: 0.6903  loss_cls: 0.01987  loss_box_reg: 0.003664  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02211  time: 1.6103  data_time: 0.1020  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:40:28 d2.utils.events]: [0m eta: 2:01:43  iter: 3519  total_loss: 0.6864  loss_cls: 0.01809  loss_box_reg: 0.003115  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02128  time: 1.6103  data_time: 0.1024  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:41:00 d2.utils.events]: [0m eta: 2:01:08  iter: 3539  total_loss: 0.6911  loss_cls: 0.01792  loss_box_reg: 0.002709  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02344  time: 1.6103  data_time: 0.1010  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:41:33 d2.utils.events]: [0m eta: 2:00:34  iter: 3559  total_loss: 0.6915  loss_cls: 0.01976  loss_box_reg: 0.003277  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02671  time: 1.6104  data_time: 0.1055  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:42:05 d2.utils.events]: [0m eta: 2:00:00  iter: 3579  total_loss: 0.6902  loss_cls: 0.02012  loss_box_reg: 0.003736  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02253  time: 1.6104  data_time: 0.0992  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:42:37 d2.utils.events]: [0m eta: 1:59:21  iter: 3599  total_loss: 0.6929  loss_cls: 0.01933  loss_box_reg: 0.003577  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02388  time: 1.6104  data_time: 0.1047  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:43:10 d2.utils.events]: [0m eta: 1:59:01  iter: 3619  total_loss: 0.6915  loss_cls: 0.01883  loss_box_reg: 0.002996  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02301  time: 1.6107  data_time: 0.1091  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:43:43 d2.utils.events]: [0m eta: 1:58:27  iter: 3639  total_loss: 0.6929  loss_cls: 0.01946  loss_box_reg: 0.003218  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02382  time: 1.6107  data_time: 0.0939  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:44:15 d2.utils.events]: [0m eta: 1:57:57  iter: 3659  total_loss: 0.6915  loss_cls: 0.01791  loss_box_reg: 0.002584  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02462  time: 1.6107  data_time: 0.1032  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:44:47 d2.utils.events]: [0m eta: 1:57:30  iter: 3679  total_loss: 0.6892  loss_cls: 0.01977  loss_box_reg: 0.003514  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02139  time: 1.6108  data_time: 0.1036  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:45:20 d2.utils.events]: [0m eta: 1:56:56  iter: 3699  total_loss: 0.6926  loss_cls: 0.0188  loss_box_reg: 0.003204  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02552  time: 1.6108  data_time: 0.1059  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:45:53 d2.utils.events]: [0m eta: 1:56:36  iter: 3719  total_loss: 0.6897  loss_cls: 0.01877  loss_box_reg: 0.003146  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02456  time: 1.6110  data_time: 0.1009  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:46:24 d2.utils.events]: [0m eta: 1:55:54  iter: 3739  total_loss: 0.6945  loss_cls: 0.0201  loss_box_reg: 0.003854  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02439  time: 1.6108  data_time: 0.1065  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:46:57 d2.utils.events]: [0m eta: 1:55:28  iter: 3759  total_loss: 0.6923  loss_cls: 0.01878  loss_box_reg: 0.002778  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02378  time: 1.6110  data_time: 0.0995  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:47:28 d2.utils.events]: [0m eta: 1:54:42  iter: 3779  total_loss: 0.6919  loss_cls: 0.01996  loss_box_reg: 0.003544  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02229  time: 1.6107  data_time: 0.1003  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:48:01 d2.utils.events]: [0m eta: 1:54:07  iter: 3799  total_loss: 0.6898  loss_cls: 0.0185  loss_box_reg: 0.00276  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02184  time: 1.6109  data_time: 0.1028  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:48:34 d2.utils.events]: [0m eta: 1:53:35  iter: 3819  total_loss: 0.6896  loss_cls: 0.0182  loss_box_reg: 0.00267  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02489  time: 1.6111  data_time: 0.0983  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:49:07 d2.utils.events]: [0m eta: 1:53:02  iter: 3839  total_loss: 0.6979  loss_cls: 0.02004  loss_box_reg: 0.003967  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02687  time: 1.6112  data_time: 0.1047  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:49:36 d2.utils.events]: [0m eta: 1:52:31  iter: 3859  total_loss: 0.6912  loss_cls: 0.01796  loss_box_reg: 0.002891  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02383  time: 1.6103  data_time: 0.0937  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:50:09 d2.utils.events]: [0m eta: 1:52:00  iter: 3879  total_loss: 0.6892  loss_cls: 0.01847  loss_box_reg: 0.003313  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02206  time: 1.6106  data_time: 0.1016  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:50:42 d2.utils.events]: [0m eta: 1:51:30  iter: 3899  total_loss: 0.693  loss_cls: 0.01915  loss_box_reg: 0.003442  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02267  time: 1.6109  data_time: 0.1027  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:51:15 d2.utils.events]: [0m eta: 1:51:07  iter: 3919  total_loss: 0.6905  loss_cls: 0.01865  loss_box_reg: 0.002791  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02145  time: 1.6110  data_time: 0.0989  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:51:48 d2.utils.events]: [0m eta: 1:50:27  iter: 3939  total_loss: 0.6875  loss_cls: 0.01881  loss_box_reg: 0.00319  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02235  time: 1.6111  data_time: 0.1016  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:52:20 d2.utils.events]: [0m eta: 1:50:05  iter: 3959  total_loss: 0.6916  loss_cls: 0.01887  loss_box_reg: 0.003165  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02466  time: 1.6112  data_time: 0.1040  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:52:53 d2.utils.events]: [0m eta: 1:49:32  iter: 3979  total_loss: 0.6912  loss_cls: 0.01918  loss_box_reg: 0.003367  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02322  time: 1.6113  data_time: 0.1084  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:53:25 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0003999.pth
+[32m[07/10 00:53:26 d2.utils.events]: [0m eta: 1:49:00  iter: 3999  total_loss: 0.6932  loss_cls: 0.01893  loss_box_reg: 0.003135  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02631  time: 1.6114  data_time: 0.1039  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:53:58 d2.utils.events]: [0m eta: 1:48:23  iter: 4019  total_loss: 0.6884  loss_cls: 0.01767  loss_box_reg: 0.002356  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02244  time: 1.6115  data_time: 0.0984  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:54:30 d2.utils.events]: [0m eta: 1:47:47  iter: 4039  total_loss: 0.6883  loss_cls: 0.01907  loss_box_reg: 0.002847  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.0233  time: 1.6114  data_time: 0.1012  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:55:03 d2.utils.events]: [0m eta: 1:47:18  iter: 4059  total_loss: 0.6912  loss_cls: 0.01702  loss_box_reg: 0.00226  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02522  time: 1.6116  data_time: 0.1038  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:55:36 d2.utils.events]: [0m eta: 1:46:53  iter: 4079  total_loss: 0.6907  loss_cls: 0.01899  loss_box_reg: 0.003805  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02397  time: 1.6116  data_time: 0.1020  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:56:08 d2.utils.events]: [0m eta: 1:46:15  iter: 4099  total_loss: 0.6905  loss_cls: 0.01815  loss_box_reg: 0.002718  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02496  time: 1.6117  data_time: 0.0996  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:56:41 d2.utils.events]: [0m eta: 1:45:54  iter: 4119  total_loss: 0.6872  loss_cls: 0.01682  loss_box_reg: 0.002028  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02334  time: 1.6118  data_time: 0.0988  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:57:12 d2.utils.events]: [0m eta: 1:45:07  iter: 4139  total_loss: 0.6917  loss_cls: 0.0192  loss_box_reg: 0.003626  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02315  time: 1.6116  data_time: 0.0983  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:57:44 d2.utils.events]: [0m eta: 1:44:30  iter: 4159  total_loss: 0.6896  loss_cls: 0.0175  loss_box_reg: 0.00233  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02359  time: 1.6115  data_time: 0.1015  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:58:17 d2.utils.events]: [0m eta: 1:44:01  iter: 4179  total_loss: 0.6913  loss_cls: 0.01857  loss_box_reg: 0.003497  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02337  time: 1.6116  data_time: 0.1019  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:58:50 d2.utils.events]: [0m eta: 1:43:29  iter: 4199  total_loss: 0.6925  loss_cls: 0.01786  loss_box_reg: 0.00264  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02059  time: 1.6117  data_time: 0.1029  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:59:20 d2.utils.events]: [0m eta: 1:42:56  iter: 4219  total_loss: 0.6909  loss_cls: 0.01945  loss_box_reg: 0.003628  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02519  time: 1.6112  data_time: 0.1003  lr: 0.001  max_mem: 11705M
+[32m[07/10 00:59:53 d2.utils.events]: [0m eta: 1:42:23  iter: 4239  total_loss: 0.6884  loss_cls: 0.01893  loss_box_reg: 0.003387  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02058  time: 1.6114  data_time: 0.1058  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:00:25 d2.utils.events]: [0m eta: 1:41:51  iter: 4259  total_loss: 0.6913  loss_cls: 0.01846  loss_box_reg: 0.003348  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02306  time: 1.6114  data_time: 0.0975  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:00:58 d2.utils.events]: [0m eta: 1:41:18  iter: 4279  total_loss: 0.6914  loss_cls: 0.01916  loss_box_reg: 0.003771  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02348  time: 1.6115  data_time: 0.1020  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:01:31 d2.utils.events]: [0m eta: 1:40:46  iter: 4299  total_loss: 0.6899  loss_cls: 0.02038  loss_box_reg: 0.003826  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.0221  time: 1.6117  data_time: 0.1027  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:02:04 d2.utils.events]: [0m eta: 1:40:28  iter: 4319  total_loss: 0.6866  loss_cls: 0.01998  loss_box_reg: 0.004001  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.01958  time: 1.6118  data_time: 0.1021  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:02:35 d2.utils.events]: [0m eta: 1:39:56  iter: 4339  total_loss: 0.6884  loss_cls: 0.01837  loss_box_reg: 0.002839  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02088  time: 1.6117  data_time: 0.1055  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:03:07 d2.utils.events]: [0m eta: 1:39:20  iter: 4359  total_loss: 0.688  loss_cls: 0.01798  loss_box_reg: 0.003082  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02268  time: 1.6116  data_time: 0.1029  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:03:39 d2.utils.events]: [0m eta: 1:38:37  iter: 4379  total_loss: 0.695  loss_cls: 0.01794  loss_box_reg: 0.002948  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02385  time: 1.6116  data_time: 0.1049  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:04:12 d2.utils.events]: [0m eta: 1:38:09  iter: 4399  total_loss: 0.6888  loss_cls: 0.01668  loss_box_reg: 0.00227  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02219  time: 1.6117  data_time: 0.0979  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:04:44 d2.utils.events]: [0m eta: 1:37:30  iter: 4419  total_loss: 0.6922  loss_cls: 0.01855  loss_box_reg: 0.002915  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02642  time: 1.6117  data_time: 0.1029  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:05:17 d2.utils.events]: [0m eta: 1:36:57  iter: 4439  total_loss: 0.6934  loss_cls: 0.02005  loss_box_reg: 0.003309  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02691  time: 1.6117  data_time: 0.1061  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:05:49 d2.utils.events]: [0m eta: 1:36:24  iter: 4459  total_loss: 0.6896  loss_cls: 0.01849  loss_box_reg: 0.002702  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02283  time: 1.6119  data_time: 0.1056  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:06:21 d2.utils.events]: [0m eta: 1:35:47  iter: 4479  total_loss: 0.6889  loss_cls: 0.01829  loss_box_reg: 0.00281  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02599  time: 1.6118  data_time: 0.1053  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:06:53 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0004499.pth
+[32m[07/10 01:06:53 d2.utils.events]: [0m eta: 1:35:12  iter: 4499  total_loss: 0.692  loss_cls: 0.01853  loss_box_reg: 0.003096  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02258  time: 1.6116  data_time: 0.1030  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:07:24 d2.utils.events]: [0m eta: 1:34:34  iter: 4519  total_loss: 0.6913  loss_cls: 0.01871  loss_box_reg: 0.003048  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02357  time: 1.6113  data_time: 0.1022  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:07:56 d2.utils.events]: [0m eta: 1:34:01  iter: 4539  total_loss: 0.6906  loss_cls: 0.0186  loss_box_reg: 0.003378  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02407  time: 1.6114  data_time: 0.1057  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:08:29 d2.utils.events]: [0m eta: 1:33:27  iter: 4559  total_loss: 0.6869  loss_cls: 0.01825  loss_box_reg: 0.003056  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02309  time: 1.6114  data_time: 0.1045  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:09:01 d2.utils.events]: [0m eta: 1:32:54  iter: 4579  total_loss: 0.6885  loss_cls: 0.01835  loss_box_reg: 0.003337  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02109  time: 1.6114  data_time: 0.1025  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:09:30 d2.utils.events]: [0m eta: 1:32:20  iter: 4599  total_loss: 0.6905  loss_cls: 0.01885  loss_box_reg: 0.003382  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02229  time: 1.6106  data_time: 0.1003  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:10:03 d2.utils.events]: [0m eta: 1:31:45  iter: 4619  total_loss: 0.6881  loss_cls: 0.01816  loss_box_reg: 0.002831  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02332  time: 1.6108  data_time: 0.1037  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:10:35 d2.utils.events]: [0m eta: 1:31:13  iter: 4639  total_loss: 0.6916  loss_cls: 0.01832  loss_box_reg: 0.003431  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02516  time: 1.6108  data_time: 0.1048  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:11:07 d2.utils.events]: [0m eta: 1:30:40  iter: 4659  total_loss: 0.6932  loss_cls: 0.01825  loss_box_reg: 0.003029  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02743  time: 1.6108  data_time: 0.1031  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:11:40 d2.utils.events]: [0m eta: 1:30:08  iter: 4679  total_loss: 0.6881  loss_cls: 0.01841  loss_box_reg: 0.003025  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02178  time: 1.6110  data_time: 0.1019  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:12:13 d2.utils.events]: [0m eta: 1:29:37  iter: 4699  total_loss: 0.6896  loss_cls: 0.01754  loss_box_reg: 0.002906  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02384  time: 1.6111  data_time: 0.1049  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:12:46 d2.utils.events]: [0m eta: 1:29:02  iter: 4719  total_loss: 0.6879  loss_cls: 0.01875  loss_box_reg: 0.003294  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02023  time: 1.6113  data_time: 0.1025  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:13:19 d2.utils.events]: [0m eta: 1:28:32  iter: 4739  total_loss: 0.6926  loss_cls: 0.01938  loss_box_reg: 0.003278  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.0251  time: 1.6114  data_time: 0.1067  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:13:51 d2.utils.events]: [0m eta: 1:27:57  iter: 4759  total_loss: 0.6879  loss_cls: 0.0182  loss_box_reg: 0.003409  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02429  time: 1.6114  data_time: 0.1070  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:14:23 d2.utils.events]: [0m eta: 1:27:28  iter: 4779  total_loss: 0.6924  loss_cls: 0.01877  loss_box_reg: 0.00323  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02581  time: 1.6113  data_time: 0.1084  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:14:56 d2.utils.events]: [0m eta: 1:26:55  iter: 4799  total_loss: 0.6904  loss_cls: 0.01926  loss_box_reg: 0.003072  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02266  time: 1.6114  data_time: 0.1058  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:15:29 d2.utils.events]: [0m eta: 1:26:23  iter: 4819  total_loss: 0.6907  loss_cls: 0.0188  loss_box_reg: 0.003185  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02207  time: 1.6116  data_time: 0.1065  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:16:02 d2.utils.events]: [0m eta: 1:25:55  iter: 4839  total_loss: 0.6863  loss_cls: 0.01727  loss_box_reg: 0.00234  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02257  time: 1.6118  data_time: 0.0938  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:16:36 d2.utils.events]: [0m eta: 1:25:29  iter: 4859  total_loss: 0.6925  loss_cls: 0.01845  loss_box_reg: 0.00309  loss_rpn_cls: 0.6458  loss_rpn_loc: 0.02545  time: 1.6121  data_time: 0.1018  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:17:08 d2.utils.events]: [0m eta: 1:24:59  iter: 4879  total_loss: 0.6927  loss_cls: 0.01864  loss_box_reg: 0.003465  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02588  time: 1.6122  data_time: 0.0995  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:17:41 d2.utils.events]: [0m eta: 1:24:22  iter: 4899  total_loss: 0.6877  loss_cls: 0.01771  loss_box_reg: 0.002602  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02326  time: 1.6122  data_time: 0.1061  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:18:14 d2.utils.events]: [0m eta: 1:23:50  iter: 4919  total_loss: 0.6899  loss_cls: 0.01883  loss_box_reg: 0.003653  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02016  time: 1.6123  data_time: 0.1082  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:18:46 d2.utils.events]: [0m eta: 1:23:16  iter: 4939  total_loss: 0.6917  loss_cls: 0.01793  loss_box_reg: 0.002548  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02718  time: 1.6123  data_time: 0.1021  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:19:16 d2.utils.events]: [0m eta: 1:22:44  iter: 4959  total_loss: 0.69  loss_cls: 0.01854  loss_box_reg: 0.003313  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02572  time: 1.6119  data_time: 0.1061  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:19:48 d2.utils.events]: [0m eta: 1:22:10  iter: 4979  total_loss: 0.6872  loss_cls: 0.01823  loss_box_reg: 0.003158  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02083  time: 1.6119  data_time: 0.1010  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:20:22 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0004999.pth
+[32m[07/10 01:20:22 d2.utils.events]: [0m eta: 1:21:40  iter: 4999  total_loss: 0.6915  loss_cls: 0.01892  loss_box_reg: 0.002924  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02318  time: 1.6121  data_time: 0.1084  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:20:53 d2.utils.events]: [0m eta: 1:21:01  iter: 5019  total_loss: 0.694  loss_cls: 0.01801  loss_box_reg: 0.002756  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02757  time: 1.6119  data_time: 0.1003  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:21:25 d2.utils.events]: [0m eta: 1:20:27  iter: 5039  total_loss: 0.6901  loss_cls: 0.01775  loss_box_reg: 0.003082  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02437  time: 1.6118  data_time: 0.1085  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:21:58 d2.utils.events]: [0m eta: 1:19:53  iter: 5059  total_loss: 0.688  loss_cls: 0.01779  loss_box_reg: 0.002961  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.0195  time: 1.6119  data_time: 0.1065  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:22:31 d2.utils.events]: [0m eta: 1:19:27  iter: 5079  total_loss: 0.6934  loss_cls: 0.01866  loss_box_reg: 0.003147  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.0234  time: 1.6122  data_time: 0.1039  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:23:04 d2.utils.events]: [0m eta: 1:18:56  iter: 5099  total_loss: 0.6927  loss_cls: 0.01912  loss_box_reg: 0.003253  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02321  time: 1.6123  data_time: 0.1015  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:23:36 d2.utils.events]: [0m eta: 1:18:24  iter: 5119  total_loss: 0.6897  loss_cls: 0.01821  loss_box_reg: 0.003075  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02316  time: 1.6123  data_time: 0.1074  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:24:09 d2.utils.events]: [0m eta: 1:18:01  iter: 5139  total_loss: 0.6907  loss_cls: 0.01762  loss_box_reg: 0.003799  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02483  time: 1.6123  data_time: 0.1048  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:24:41 d2.utils.events]: [0m eta: 1:17:23  iter: 5159  total_loss: 0.6883  loss_cls: 0.01785  loss_box_reg: 0.002191  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02099  time: 1.6124  data_time: 0.1082  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:25:14 d2.utils.events]: [0m eta: 1:16:51  iter: 5179  total_loss: 0.6938  loss_cls: 0.0189  loss_box_reg: 0.003485  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02673  time: 1.6125  data_time: 0.1008  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:25:47 d2.utils.events]: [0m eta: 1:16:17  iter: 5199  total_loss: 0.692  loss_cls: 0.0182  loss_box_reg: 0.003127  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.0261  time: 1.6125  data_time: 0.0986  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:26:20 d2.utils.events]: [0m eta: 1:15:45  iter: 5219  total_loss: 0.6917  loss_cls: 0.01873  loss_box_reg: 0.003219  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02182  time: 1.6127  data_time: 0.1009  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:26:51 d2.utils.events]: [0m eta: 1:15:13  iter: 5239  total_loss: 0.6906  loss_cls: 0.01835  loss_box_reg: 0.002878  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02335  time: 1.6126  data_time: 0.1045  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:27:24 d2.utils.events]: [0m eta: 1:14:40  iter: 5259  total_loss: 0.6878  loss_cls: 0.01921  loss_box_reg: 0.003871  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02124  time: 1.6127  data_time: 0.1008  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:27:57 d2.utils.events]: [0m eta: 1:14:03  iter: 5279  total_loss: 0.6882  loss_cls: 0.01891  loss_box_reg: 0.00336  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0213  time: 1.6128  data_time: 0.0981  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:28:30 d2.utils.events]: [0m eta: 1:13:30  iter: 5299  total_loss: 0.6897  loss_cls: 0.01681  loss_box_reg: 0.002663  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02103  time: 1.6129  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:29:03 d2.utils.events]: [0m eta: 1:12:54  iter: 5319  total_loss: 0.6852  loss_cls: 0.01909  loss_box_reg: 0.003235  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02018  time: 1.6131  data_time: 0.1004  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:29:32 d2.utils.events]: [0m eta: 1:12:20  iter: 5339  total_loss: 0.6932  loss_cls: 0.01697  loss_box_reg: 0.002414  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02583  time: 1.6124  data_time: 0.1033  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:30:05 d2.utils.events]: [0m eta: 1:11:54  iter: 5359  total_loss: 0.6889  loss_cls: 0.01769  loss_box_reg: 0.003426  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02353  time: 1.6125  data_time: 0.1037  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:30:37 d2.utils.events]: [0m eta: 1:11:16  iter: 5379  total_loss: 0.6881  loss_cls: 0.01813  loss_box_reg: 0.002851  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02136  time: 1.6125  data_time: 0.1034  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:31:09 d2.utils.events]: [0m eta: 1:10:44  iter: 5399  total_loss: 0.692  loss_cls: 0.0193  loss_box_reg: 0.003695  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.0266  time: 1.6125  data_time: 0.0973  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:31:42 d2.utils.events]: [0m eta: 1:10:17  iter: 5419  total_loss: 0.689  loss_cls: 0.01781  loss_box_reg: 0.003061  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02003  time: 1.6126  data_time: 0.1037  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:32:15 d2.utils.events]: [0m eta: 1:09:42  iter: 5439  total_loss: 0.6842  loss_cls: 0.01748  loss_box_reg: 0.002613  loss_rpn_cls: 0.6438  loss_rpn_loc: 0.01895  time: 1.6127  data_time: 0.1012  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:32:48 d2.utils.events]: [0m eta: 1:09:11  iter: 5459  total_loss: 0.6831  loss_cls: 0.01902  loss_box_reg: 0.003399  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.01992  time: 1.6128  data_time: 0.1050  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:33:20 d2.utils.events]: [0m eta: 1:08:40  iter: 5479  total_loss: 0.6905  loss_cls: 0.01834  loss_box_reg: 0.003396  loss_rpn_cls: 0.645  loss_rpn_loc: 0.0247  time: 1.6129  data_time: 0.1092  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:33:53 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0005499.pth
+[32m[07/10 01:33:53 d2.utils.events]: [0m eta: 1:08:12  iter: 5499  total_loss: 0.6923  loss_cls: 0.01841  loss_box_reg: 0.003242  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.0231  time: 1.6129  data_time: 0.1050  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:34:26 d2.utils.events]: [0m eta: 1:07:41  iter: 5519  total_loss: 0.6885  loss_cls: 0.01821  loss_box_reg: 0.002989  loss_rpn_cls: 0.6454  loss_rpn_loc: 0.0231  time: 1.6130  data_time: 0.1030  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:34:59 d2.utils.events]: [0m eta: 1:07:09  iter: 5539  total_loss: 0.689  loss_cls: 0.0182  loss_box_reg: 0.003217  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02126  time: 1.6131  data_time: 0.1033  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:35:30 d2.utils.events]: [0m eta: 1:06:36  iter: 5559  total_loss: 0.6918  loss_cls: 0.01724  loss_box_reg: 0.002623  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02415  time: 1.6130  data_time: 0.1001  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:36:03 d2.utils.events]: [0m eta: 1:06:04  iter: 5579  total_loss: 0.6879  loss_cls: 0.01859  loss_box_reg: 0.002969  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02246  time: 1.6131  data_time: 0.1016  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:36:35 d2.utils.events]: [0m eta: 1:05:31  iter: 5599  total_loss: 0.6916  loss_cls: 0.01665  loss_box_reg: 0.002669  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02367  time: 1.6131  data_time: 0.1046  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:37:08 d2.utils.events]: [0m eta: 1:04:58  iter: 5619  total_loss: 0.6887  loss_cls: 0.01811  loss_box_reg: 0.003068  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02241  time: 1.6131  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:37:40 d2.utils.events]: [0m eta: 1:04:26  iter: 5639  total_loss: 0.6889  loss_cls: 0.01905  loss_box_reg: 0.003172  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02139  time: 1.6132  data_time: 0.1060  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:38:13 d2.utils.events]: [0m eta: 1:03:55  iter: 5659  total_loss: 0.6892  loss_cls: 0.01773  loss_box_reg: 0.002829  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02298  time: 1.6132  data_time: 0.1056  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:38:45 d2.utils.events]: [0m eta: 1:03:19  iter: 5679  total_loss: 0.6948  loss_cls: 0.02078  loss_box_reg: 0.003816  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02653  time: 1.6132  data_time: 0.1006  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:39:15 d2.utils.events]: [0m eta: 1:02:50  iter: 5699  total_loss: 0.6877  loss_cls: 0.01832  loss_box_reg: 0.003235  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02043  time: 1.6128  data_time: 0.1010  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:39:47 d2.utils.events]: [0m eta: 1:02:14  iter: 5719  total_loss: 0.6882  loss_cls: 0.01841  loss_box_reg: 0.003598  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02149  time: 1.6127  data_time: 0.1027  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:40:19 d2.utils.events]: [0m eta: 1:01:41  iter: 5739  total_loss: 0.6836  loss_cls: 0.01738  loss_box_reg: 0.002702  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.0181  time: 1.6127  data_time: 0.1025  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:40:52 d2.utils.events]: [0m eta: 1:01:08  iter: 5759  total_loss: 0.6938  loss_cls: 0.01924  loss_box_reg: 0.003236  loss_rpn_cls: 0.6439  loss_rpn_loc: 0.02419  time: 1.6128  data_time: 0.0980  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:41:25 d2.utils.events]: [0m eta: 1:00:39  iter: 5779  total_loss: 0.6874  loss_cls: 0.01751  loss_box_reg: 0.002669  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02196  time: 1.6129  data_time: 0.1050  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:41:58 d2.utils.events]: [0m eta: 1:00:07  iter: 5799  total_loss: 0.6913  loss_cls: 0.01782  loss_box_reg: 0.003018  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02471  time: 1.6131  data_time: 0.0923  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:42:31 d2.utils.events]: [0m eta: 0:59:32  iter: 5819  total_loss: 0.6889  loss_cls: 0.01832  loss_box_reg: 0.002972  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02159  time: 1.6131  data_time: 0.0972  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:43:04 d2.utils.events]: [0m eta: 0:58:58  iter: 5839  total_loss: 0.6906  loss_cls: 0.01757  loss_box_reg: 0.003293  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02274  time: 1.6134  data_time: 0.1049  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:43:37 d2.utils.events]: [0m eta: 0:58:24  iter: 5859  total_loss: 0.687  loss_cls: 0.01933  loss_box_reg: 0.003868  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02147  time: 1.6134  data_time: 0.0963  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:44:10 d2.utils.events]: [0m eta: 0:57:51  iter: 5879  total_loss: 0.6885  loss_cls: 0.01712  loss_box_reg: 0.00217  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.0236  time: 1.6135  data_time: 0.1017  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:44:42 d2.utils.events]: [0m eta: 0:57:19  iter: 5899  total_loss: 0.6856  loss_cls: 0.01744  loss_box_reg: 0.002424  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02125  time: 1.6135  data_time: 0.0974  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:45:14 d2.utils.events]: [0m eta: 0:56:42  iter: 5919  total_loss: 0.6934  loss_cls: 0.0183  loss_box_reg: 0.003215  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02518  time: 1.6135  data_time: 0.1050  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:45:46 d2.utils.events]: [0m eta: 0:56:11  iter: 5939  total_loss: 0.6897  loss_cls: 0.01815  loss_box_reg: 0.00326  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02089  time: 1.6135  data_time: 0.0969  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:46:19 d2.utils.events]: [0m eta: 0:55:35  iter: 5959  total_loss: 0.6908  loss_cls: 0.01786  loss_box_reg: 0.003392  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02408  time: 1.6135  data_time: 0.0939  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:46:52 d2.utils.events]: [0m eta: 0:55:02  iter: 5979  total_loss: 0.6847  loss_cls: 0.01757  loss_box_reg: 0.00341  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02059  time: 1.6136  data_time: 0.1066  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:47:24 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0005999.pth
+[32m[07/10 01:47:24 d2.utils.events]: [0m eta: 0:54:29  iter: 5999  total_loss: 0.6883  loss_cls: 0.01633  loss_box_reg: 0.002084  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02528  time: 1.6136  data_time: 0.1051  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:47:57 d2.utils.events]: [0m eta: 0:54:02  iter: 6019  total_loss: 0.6891  loss_cls: 0.01719  loss_box_reg: 0.002604  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02341  time: 1.6137  data_time: 0.1003  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:48:29 d2.utils.events]: [0m eta: 0:53:29  iter: 6039  total_loss: 0.6915  loss_cls: 0.01759  loss_box_reg: 0.002852  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02647  time: 1.6137  data_time: 0.1063  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:49:02 d2.utils.events]: [0m eta: 0:52:55  iter: 6059  total_loss: 0.6906  loss_cls: 0.01796  loss_box_reg: 0.00281  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02235  time: 1.6137  data_time: 0.0990  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:49:31 d2.utils.events]: [0m eta: 0:52:19  iter: 6079  total_loss: 0.6862  loss_cls: 0.01723  loss_box_reg: 0.002513  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02117  time: 1.6132  data_time: 0.0979  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:50:05 d2.utils.events]: [0m eta: 0:51:47  iter: 6099  total_loss: 0.6955  loss_cls: 0.01805  loss_box_reg: 0.003444  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02778  time: 1.6134  data_time: 0.1022  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:50:37 d2.utils.events]: [0m eta: 0:51:18  iter: 6119  total_loss: 0.6904  loss_cls: 0.01837  loss_box_reg: 0.003137  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02405  time: 1.6135  data_time: 0.1023  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:51:10 d2.utils.events]: [0m eta: 0:50:45  iter: 6139  total_loss: 0.6913  loss_cls: 0.01798  loss_box_reg: 0.004023  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02463  time: 1.6136  data_time: 0.1015  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:51:43 d2.utils.events]: [0m eta: 0:50:14  iter: 6159  total_loss: 0.6889  loss_cls: 0.01795  loss_box_reg: 0.003194  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02422  time: 1.6138  data_time: 0.1122  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:52:16 d2.utils.events]: [0m eta: 0:49:41  iter: 6179  total_loss: 0.6917  loss_cls: 0.01823  loss_box_reg: 0.003242  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02719  time: 1.6138  data_time: 0.1063  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:52:49 d2.utils.events]: [0m eta: 0:49:08  iter: 6199  total_loss: 0.6896  loss_cls: 0.01801  loss_box_reg: 0.003409  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02172  time: 1.6139  data_time: 0.1044  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:53:23 d2.utils.events]: [0m eta: 0:48:36  iter: 6219  total_loss: 0.6895  loss_cls: 0.01794  loss_box_reg: 0.002576  loss_rpn_cls: 0.6454  loss_rpn_loc: 0.02275  time: 1.6142  data_time: 0.1000  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:53:55 d2.utils.events]: [0m eta: 0:48:03  iter: 6239  total_loss: 0.6931  loss_cls: 0.01721  loss_box_reg: 0.002462  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.0241  time: 1.6142  data_time: 0.1061  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:54:27 d2.utils.events]: [0m eta: 0:47:30  iter: 6259  total_loss: 0.688  loss_cls: 0.01736  loss_box_reg: 0.003194  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02222  time: 1.6141  data_time: 0.1046  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:54:58 d2.utils.events]: [0m eta: 0:46:57  iter: 6279  total_loss: 0.6897  loss_cls: 0.01875  loss_box_reg: 0.004067  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02244  time: 1.6140  data_time: 0.1048  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:55:31 d2.utils.events]: [0m eta: 0:46:24  iter: 6299  total_loss: 0.6964  loss_cls: 0.01728  loss_box_reg: 0.002924  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02382  time: 1.6140  data_time: 0.1033  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:56:04 d2.utils.events]: [0m eta: 0:45:52  iter: 6319  total_loss: 0.6913  loss_cls: 0.01771  loss_box_reg: 0.003252  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02575  time: 1.6141  data_time: 0.1022  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:56:37 d2.utils.events]: [0m eta: 0:45:20  iter: 6339  total_loss: 0.6865  loss_cls: 0.01885  loss_box_reg: 0.003431  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.0204  time: 1.6143  data_time: 0.1062  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:57:10 d2.utils.events]: [0m eta: 0:44:50  iter: 6359  total_loss: 0.6866  loss_cls: 0.01805  loss_box_reg: 0.003092  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02261  time: 1.6144  data_time: 0.1023  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:57:44 d2.utils.events]: [0m eta: 0:44:21  iter: 6379  total_loss: 0.6874  loss_cls: 0.01875  loss_box_reg: 0.00326  loss_rpn_cls: 0.6455  loss_rpn_loc: 0.02143  time: 1.6145  data_time: 0.1021  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:58:16 d2.utils.events]: [0m eta: 0:43:47  iter: 6399  total_loss: 0.6904  loss_cls: 0.01777  loss_box_reg: 0.002789  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02272  time: 1.6145  data_time: 0.0955  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:58:48 d2.utils.events]: [0m eta: 0:43:13  iter: 6419  total_loss: 0.6885  loss_cls: 0.01608  loss_box_reg: 0.001991  loss_rpn_cls: 0.6439  loss_rpn_loc: 0.02449  time: 1.6145  data_time: 0.0950  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:59:17 d2.utils.events]: [0m eta: 0:42:41  iter: 6439  total_loss: 0.6859  loss_cls: 0.01698  loss_box_reg: 0.00264  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02323  time: 1.6140  data_time: 0.1015  lr: 0.001  max_mem: 11705M
+[32m[07/10 01:59:50 d2.utils.events]: [0m eta: 0:42:06  iter: 6459  total_loss: 0.6886  loss_cls: 0.01795  loss_box_reg: 0.003122  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.026  time: 1.6141  data_time: 0.1030  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:00:21 d2.utils.events]: [0m eta: 0:41:30  iter: 6479  total_loss: 0.6835  loss_cls: 0.01709  loss_box_reg: 0.002996  loss_rpn_cls: 0.6439  loss_rpn_loc: 0.01906  time: 1.6139  data_time: 0.1033  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:00:54 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0006499.pth
+[32m[07/10 02:00:54 d2.utils.events]: [0m eta: 0:40:57  iter: 6499  total_loss: 0.6856  loss_cls: 0.01785  loss_box_reg: 0.002883  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02092  time: 1.6140  data_time: 0.1048  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:01:26 d2.utils.events]: [0m eta: 0:40:24  iter: 6519  total_loss: 0.6863  loss_cls: 0.01772  loss_box_reg: 0.003076  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02385  time: 1.6139  data_time: 0.1042  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:01:59 d2.utils.events]: [0m eta: 0:39:54  iter: 6539  total_loss: 0.6883  loss_cls: 0.01805  loss_box_reg: 0.003207  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02244  time: 1.6141  data_time: 0.1062  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:02:32 d2.utils.events]: [0m eta: 0:39:22  iter: 6559  total_loss: 0.6887  loss_cls: 0.01817  loss_box_reg: 0.003246  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02231  time: 1.6141  data_time: 0.1051  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:03:05 d2.utils.events]: [0m eta: 0:38:49  iter: 6579  total_loss: 0.69  loss_cls: 0.01793  loss_box_reg: 0.003566  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02327  time: 1.6142  data_time: 0.1015  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:03:37 d2.utils.events]: [0m eta: 0:38:16  iter: 6599  total_loss: 0.6893  loss_cls: 0.01703  loss_box_reg: 0.002942  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02483  time: 1.6142  data_time: 0.1010  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:04:09 d2.utils.events]: [0m eta: 0:37:43  iter: 6619  total_loss: 0.6866  loss_cls: 0.01714  loss_box_reg: 0.002451  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.0229  time: 1.6142  data_time: 0.0949  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:04:42 d2.utils.events]: [0m eta: 0:37:11  iter: 6639  total_loss: 0.6856  loss_cls: 0.01811  loss_box_reg: 0.003491  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02094  time: 1.6142  data_time: 0.1050  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:05:15 d2.utils.events]: [0m eta: 0:36:39  iter: 6659  total_loss: 0.6909  loss_cls: 0.01783  loss_box_reg: 0.003051  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02237  time: 1.6143  data_time: 0.1030  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:05:48 d2.utils.events]: [0m eta: 0:36:07  iter: 6679  total_loss: 0.6908  loss_cls: 0.01718  loss_box_reg: 0.002578  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02578  time: 1.6144  data_time: 0.1034  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:06:20 d2.utils.events]: [0m eta: 0:35:33  iter: 6699  total_loss: 0.693  loss_cls: 0.01907  loss_box_reg: 0.004181  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02466  time: 1.6145  data_time: 0.1062  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:06:53 d2.utils.events]: [0m eta: 0:35:00  iter: 6719  total_loss: 0.6929  loss_cls: 0.01823  loss_box_reg: 0.003591  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02464  time: 1.6145  data_time: 0.1027  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:07:25 d2.utils.events]: [0m eta: 0:34:28  iter: 6739  total_loss: 0.6884  loss_cls: 0.01787  loss_box_reg: 0.003359  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02171  time: 1.6146  data_time: 0.1043  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:07:58 d2.utils.events]: [0m eta: 0:33:55  iter: 6759  total_loss: 0.6877  loss_cls: 0.01668  loss_box_reg: 0.00242  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02309  time: 1.6146  data_time: 0.1039  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:08:31 d2.utils.events]: [0m eta: 0:33:22  iter: 6779  total_loss: 0.6836  loss_cls: 0.01776  loss_box_reg: 0.003095  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.01974  time: 1.6146  data_time: 0.0963  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:09:04 d2.utils.events]: [0m eta: 0:32:49  iter: 6799  total_loss: 0.6874  loss_cls: 0.0186  loss_box_reg: 0.004012  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02138  time: 1.6148  data_time: 0.0975  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:09:33 d2.utils.events]: [0m eta: 0:32:16  iter: 6819  total_loss: 0.6861  loss_cls: 0.01778  loss_box_reg: 0.003245  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.01939  time: 1.6143  data_time: 0.1017  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:10:05 d2.utils.events]: [0m eta: 0:31:40  iter: 6839  total_loss: 0.6874  loss_cls: 0.01774  loss_box_reg: 0.002903  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02006  time: 1.6143  data_time: 0.1008  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:10:38 d2.utils.events]: [0m eta: 0:31:08  iter: 6859  total_loss: 0.6928  loss_cls: 0.01773  loss_box_reg: 0.003394  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02295  time: 1.6143  data_time: 0.1069  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:11:11 d2.utils.events]: [0m eta: 0:30:34  iter: 6879  total_loss: 0.6898  loss_cls: 0.01721  loss_box_reg: 0.002883  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02255  time: 1.6144  data_time: 0.0962  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:11:43 d2.utils.events]: [0m eta: 0:30:01  iter: 6899  total_loss: 0.687  loss_cls: 0.01725  loss_box_reg: 0.003401  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02297  time: 1.6144  data_time: 0.1029  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:12:15 d2.utils.events]: [0m eta: 0:29:29  iter: 6919  total_loss: 0.6872  loss_cls: 0.01713  loss_box_reg: 0.002701  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02095  time: 1.6144  data_time: 0.1053  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:12:48 d2.utils.events]: [0m eta: 0:28:57  iter: 6939  total_loss: 0.6884  loss_cls: 0.01841  loss_box_reg: 0.003318  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02368  time: 1.6145  data_time: 0.1033  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:13:22 d2.utils.events]: [0m eta: 0:28:25  iter: 6959  total_loss: 0.688  loss_cls: 0.01746  loss_box_reg: 0.003003  loss_rpn_cls: 0.6439  loss_rpn_loc: 0.02393  time: 1.6147  data_time: 0.1028  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:13:54 d2.utils.events]: [0m eta: 0:27:53  iter: 6979  total_loss: 0.6925  loss_cls: 0.01646  loss_box_reg: 0.002481  loss_rpn_cls: 0.6443  loss_rpn_loc: 0.02568  time: 1.6147  data_time: 0.1022  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:14:26 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0006999.pth
+[32m[07/10 02:14:27 d2.utils.events]: [0m eta: 0:27:20  iter: 6999  total_loss: 0.6833  loss_cls: 0.01648  loss_box_reg: 0.002127  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.01979  time: 1.6147  data_time: 0.1038  lr: 0.001  max_mem: 11705M
+[32m[07/10 02:15:00 d2.utils.events]: [0m eta: 0:26:47  iter: 7019  total_loss: 0.6891  loss_cls: 0.01809  loss_box_reg: 0.003618  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02545  time: 1.6148  data_time: 0.1008  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:15:33 d2.utils.events]: [0m eta: 0:26:16  iter: 7039  total_loss: 0.6866  loss_cls: 0.01698  loss_box_reg: 0.002265  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02162  time: 1.6150  data_time: 0.1036  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:16:05 d2.utils.events]: [0m eta: 0:25:42  iter: 7059  total_loss: 0.6927  loss_cls: 0.01737  loss_box_reg: 0.003001  loss_rpn_cls: 0.6451  loss_rpn_loc: 0.02617  time: 1.6149  data_time: 0.1024  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:16:38 d2.utils.events]: [0m eta: 0:25:10  iter: 7079  total_loss: 0.6883  loss_cls: 0.01688  loss_box_reg: 0.002361  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02349  time: 1.6150  data_time: 0.1007  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:17:10 d2.utils.events]: [0m eta: 0:24:36  iter: 7099  total_loss: 0.6897  loss_cls: 0.01768  loss_box_reg: 0.003064  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02159  time: 1.6150  data_time: 0.1067  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:17:43 d2.utils.events]: [0m eta: 0:24:03  iter: 7119  total_loss: 0.6854  loss_cls: 0.01706  loss_box_reg: 0.002789  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02106  time: 1.6150  data_time: 0.0984  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:18:15 d2.utils.events]: [0m eta: 0:23:30  iter: 7139  total_loss: 0.6956  loss_cls: 0.01845  loss_box_reg: 0.003529  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02462  time: 1.6150  data_time: 0.0968  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:18:46 d2.utils.events]: [0m eta: 0:22:56  iter: 7159  total_loss: 0.6951  loss_cls: 0.01813  loss_box_reg: 0.003358  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02602  time: 1.6149  data_time: 0.0992  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:19:16 d2.utils.events]: [0m eta: 0:22:23  iter: 7179  total_loss: 0.6892  loss_cls: 0.0177  loss_box_reg: 0.003367  loss_rpn_cls: 0.6436  loss_rpn_loc: 0.02173  time: 1.6145  data_time: 0.1014  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:19:48 d2.utils.events]: [0m eta: 0:21:50  iter: 7199  total_loss: 0.6944  loss_cls: 0.0189  loss_box_reg: 0.003894  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02733  time: 1.6145  data_time: 0.1032  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:20:20 d2.utils.events]: [0m eta: 0:21:16  iter: 7219  total_loss: 0.69  loss_cls: 0.01761  loss_box_reg: 0.00297  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02366  time: 1.6144  data_time: 0.0998  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:20:53 d2.utils.events]: [0m eta: 0:20:43  iter: 7239  total_loss: 0.6862  loss_cls: 0.01732  loss_box_reg: 0.002828  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02224  time: 1.6145  data_time: 0.1029  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:21:25 d2.utils.events]: [0m eta: 0:20:11  iter: 7259  total_loss: 0.6918  loss_cls: 0.01857  loss_box_reg: 0.003486  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02398  time: 1.6144  data_time: 0.0979  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:21:57 d2.utils.events]: [0m eta: 0:19:39  iter: 7279  total_loss: 0.6901  loss_cls: 0.01688  loss_box_reg: 0.002145  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02266  time: 1.6144  data_time: 0.1041  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:22:30 d2.utils.events]: [0m eta: 0:19:07  iter: 7299  total_loss: 0.692  loss_cls: 0.01768  loss_box_reg: 0.002807  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02456  time: 1.6146  data_time: 0.0991  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:23:03 d2.utils.events]: [0m eta: 0:18:34  iter: 7319  total_loss: 0.6949  loss_cls: 0.01739  loss_box_reg: 0.003139  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02782  time: 1.6146  data_time: 0.1046  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:23:35 d2.utils.events]: [0m eta: 0:18:01  iter: 7339  total_loss: 0.6873  loss_cls: 0.0184  loss_box_reg: 0.003305  loss_rpn_cls: 0.6438  loss_rpn_loc: 0.02134  time: 1.6146  data_time: 0.1060  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:24:08 d2.utils.events]: [0m eta: 0:17:27  iter: 7359  total_loss: 0.6862  loss_cls: 0.01725  loss_box_reg: 0.002703  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02036  time: 1.6146  data_time: 0.1021  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:24:40 d2.utils.events]: [0m eta: 0:16:54  iter: 7379  total_loss: 0.6916  loss_cls: 0.01904  loss_box_reg: 0.003771  loss_rpn_cls: 0.6453  loss_rpn_loc: 0.02303  time: 1.6147  data_time: 0.1052  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:25:14 d2.utils.events]: [0m eta: 0:16:22  iter: 7399  total_loss: 0.6876  loss_cls: 0.01783  loss_box_reg: 0.002623  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.02352  time: 1.6149  data_time: 0.1006  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:25:46 d2.utils.events]: [0m eta: 0:15:49  iter: 7419  total_loss: 0.6912  loss_cls: 0.01798  loss_box_reg: 0.003457  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02292  time: 1.6149  data_time: 0.1038  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:26:20 d2.utils.events]: [0m eta: 0:15:17  iter: 7439  total_loss: 0.6941  loss_cls: 0.01786  loss_box_reg: 0.003236  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.03032  time: 1.6150  data_time: 0.1054  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:26:52 d2.utils.events]: [0m eta: 0:14:45  iter: 7459  total_loss: 0.6913  loss_cls: 0.01811  loss_box_reg: 0.003126  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02411  time: 1.6150  data_time: 0.1058  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:27:24 d2.utils.events]: [0m eta: 0:14:12  iter: 7479  total_loss: 0.6843  loss_cls: 0.01754  loss_box_reg: 0.003305  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02026  time: 1.6150  data_time: 0.1081  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:27:57 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0007499.pth
+[32m[07/10 02:27:57 d2.utils.events]: [0m eta: 0:13:40  iter: 7499  total_loss: 0.6939  loss_cls: 0.01764  loss_box_reg: 0.003065  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02668  time: 1.6150  data_time: 0.1023  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:28:29 d2.utils.events]: [0m eta: 0:13:07  iter: 7519  total_loss: 0.689  loss_cls: 0.01726  loss_box_reg: 0.003116  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02284  time: 1.6150  data_time: 0.0960  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:29:02 d2.utils.events]: [0m eta: 0:12:34  iter: 7539  total_loss: 0.6883  loss_cls: 0.01765  loss_box_reg: 0.003151  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.02309  time: 1.6150  data_time: 0.1057  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:29:31 d2.utils.events]: [0m eta: 0:12:01  iter: 7559  total_loss: 0.6949  loss_cls: 0.01819  loss_box_reg: 0.003431  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02166  time: 1.6146  data_time: 0.1039  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:30:03 d2.utils.events]: [0m eta: 0:11:28  iter: 7579  total_loss: 0.6886  loss_cls: 0.01855  loss_box_reg: 0.003932  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02072  time: 1.6146  data_time: 0.1038  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:30:36 d2.utils.events]: [0m eta: 0:10:55  iter: 7599  total_loss: 0.6858  loss_cls: 0.01652  loss_box_reg: 0.002445  loss_rpn_cls: 0.6452  loss_rpn_loc: 0.02161  time: 1.6146  data_time: 0.1029  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:31:08 d2.utils.events]: [0m eta: 0:10:22  iter: 7619  total_loss: 0.6852  loss_cls: 0.01721  loss_box_reg: 0.002727  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.01972  time: 1.6146  data_time: 0.1017  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:31:40 d2.utils.events]: [0m eta: 0:09:49  iter: 7639  total_loss: 0.6864  loss_cls: 0.01774  loss_box_reg: 0.003687  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02444  time: 1.6146  data_time: 0.1042  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:32:13 d2.utils.events]: [0m eta: 0:09:16  iter: 7659  total_loss: 0.6865  loss_cls: 0.0179  loss_box_reg: 0.002945  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02105  time: 1.6146  data_time: 0.1032  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:32:45 d2.utils.events]: [0m eta: 0:08:43  iter: 7679  total_loss: 0.6885  loss_cls: 0.01661  loss_box_reg: 0.002558  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02433  time: 1.6147  data_time: 0.1066  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:33:17 d2.utils.events]: [0m eta: 0:08:10  iter: 7699  total_loss: 0.6884  loss_cls: 0.01725  loss_box_reg: 0.00284  loss_rpn_cls: 0.645  loss_rpn_loc: 0.02243  time: 1.6147  data_time: 0.1046  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:33:50 d2.utils.events]: [0m eta: 0:07:37  iter: 7719  total_loss: 0.6892  loss_cls: 0.01732  loss_box_reg: 0.002688  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.02459  time: 1.6146  data_time: 0.1054  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:34:23 d2.utils.events]: [0m eta: 0:07:05  iter: 7739  total_loss: 0.6856  loss_cls: 0.01653  loss_box_reg: 0.002673  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02197  time: 1.6147  data_time: 0.1086  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:34:55 d2.utils.events]: [0m eta: 0:06:32  iter: 7759  total_loss: 0.6885  loss_cls: 0.018  loss_box_reg: 0.0033  loss_rpn_cls: 0.6449  loss_rpn_loc: 0.0215  time: 1.6147  data_time: 0.1035  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:35:27 d2.utils.events]: [0m eta: 0:05:59  iter: 7779  total_loss: 0.6854  loss_cls: 0.01713  loss_box_reg: 0.002607  loss_rpn_cls: 0.644  loss_rpn_loc: 0.02258  time: 1.6147  data_time: 0.0986  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:35:58 d2.utils.events]: [0m eta: 0:05:26  iter: 7799  total_loss: 0.6915  loss_cls: 0.01703  loss_box_reg: 0.002497  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02579  time: 1.6146  data_time: 0.1032  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:36:31 d2.utils.events]: [0m eta: 0:04:53  iter: 7819  total_loss: 0.6873  loss_cls: 0.01824  loss_box_reg: 0.003286  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.02293  time: 1.6147  data_time: 0.1081  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:37:04 d2.utils.events]: [0m eta: 0:04:21  iter: 7839  total_loss: 0.6848  loss_cls: 0.01771  loss_box_reg: 0.00308  loss_rpn_cls: 0.6445  loss_rpn_loc: 0.01908  time: 1.6148  data_time: 0.1018  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:37:36 d2.utils.events]: [0m eta: 0:03:48  iter: 7859  total_loss: 0.6911  loss_cls: 0.01774  loss_box_reg: 0.003426  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02468  time: 1.6147  data_time: 0.1004  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:38:09 d2.utils.events]: [0m eta: 0:03:15  iter: 7879  total_loss: 0.6837  loss_cls: 0.01719  loss_box_reg: 0.002655  loss_rpn_cls: 0.6441  loss_rpn_loc: 0.02112  time: 1.6148  data_time: 0.1051  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:38:42 d2.utils.events]: [0m eta: 0:02:43  iter: 7899  total_loss: 0.6883  loss_cls: 0.01733  loss_box_reg: 0.003107  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.0229  time: 1.6149  data_time: 0.1075  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:39:12 d2.utils.events]: [0m eta: 0:02:10  iter: 7919  total_loss: 0.6843  loss_cls: 0.01634  loss_box_reg: 0.002606  loss_rpn_cls: 0.6448  loss_rpn_loc: 0.02381  time: 1.6145  data_time: 0.1031  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:39:44 d2.utils.events]: [0m eta: 0:01:38  iter: 7939  total_loss: 0.6853  loss_cls: 0.01744  loss_box_reg: 0.003063  loss_rpn_cls: 0.6442  loss_rpn_loc: 0.01991  time: 1.6146  data_time: 0.1007  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:40:16 d2.utils.events]: [0m eta: 0:01:05  iter: 7959  total_loss: 0.6921  loss_cls: 0.01732  loss_box_reg: 0.002453  loss_rpn_cls: 0.6444  loss_rpn_loc: 0.0266  time: 1.6145  data_time: 0.0947  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:40:48 d2.utils.events]: [0m eta: 0:00:32  iter: 7979  total_loss: 0.6841  loss_cls: 0.01578  loss_box_reg: 0.002376  loss_rpn_cls: 0.6446  loss_rpn_loc: 0.02032  time: 1.6145  data_time: 0.1029  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:41:21 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_0007999.pth
+--------------------------------------------------------------------
+voc_2007_test_all1
+datasets/VOC2007
+test
+['aeroplane', 'bicycle', 'boat', 'bottle', 'car', 'cat', 'chair', 'diningtable', 'dog', 'horse', 'person', 'pottedplant', 'sheep', 'train', 'tvmonitor', 'bird', 'bus', 'cow', 'motorbike', 'sofa']
+--------------------------------------------------------------------
+/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/modeling/roi_heads/fast_rcnn.py:198: UserWarning: This overload of nonzero is deprecated:
+	nonzero()
+Consider using one of the following signatures instead:
+	nonzero(*, bool as_tuple) (Triggered internally at  ../torch/csrc/utils/python_arg_parser.cpp:982.)
+  num_fg = fg_inds.nonzero().numel()
+[32m[07/10 02:41:22 fvcore.common.checkpoint]: [0mSaving checkpoint to checkpoints/voc/faster_rcnn/faster_rcnn_R_101_FPN_ft_normalized_all1_2shot_randnovel/model_final.pth
+[32m[07/10 02:41:22 d2.utils.events]: [0m eta: 0:00:00  iter: 7999  total_loss: 0.6903  loss_cls: 0.0188  loss_box_reg: 0.003925  loss_rpn_cls: 0.6447  loss_rpn_loc: 0.02107  time: 1.6146  data_time: 0.1025  lr: 0.0001  max_mem: 11705M
+[32m[07/10 02:41:22 d2.engine.hooks]: [0mOverall training speed: 7998 iterations in 3:35:13 (1.6146 s / it)
+[32m[07/10 02:41:22 d2.engine.hooks]: [0mTotal training time: 3:35:23 (0:00:09 on hooks)
+--------------------------------------------------------------------
+voc_2007_test_all1
+datasets/VOC2007
+test
+['aeroplane', 'bicycle', 'boat', 'bottle', 'car', 'cat', 'chair', 'diningtable', 'dog', 'horse', 'person', 'pottedplant', 'sheep', 'train', 'tvmonitor', 'bird', 'bus', 'cow', 'motorbike', 'sofa']
+--------------------------------------------------------------------
+/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/modeling/roi_heads/fast_rcnn.py:198: UserWarning: This overload of nonzero is deprecated:
+	nonzero()
+Consider using one of the following signatures instead:
+	nonzero(*, bool as_tuple) (Triggered internally at  ../torch/csrc/utils/python_arg_parser.cpp:982.)
+  num_fg = fg_inds.nonzero().numel()
+Traceback (most recent call last):
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/tools/train_net.py", line 113, in <module>
+    args=(args,),
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/engine/launch.py", line 59, in launch
+    daemon=False,
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 247, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 205, in start_processes
+    while not context.join():
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 166, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 1 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/site-packages/torch/multiprocessing/spawn.py", line 59, in _wrap
+    fn(i, *args)
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/engine/launch.py", line 94, in _distributed_worker
+    main_func(*args)
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/tools/train_net.py", line 101, in main
+    return trainer.train()
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/engine/defaults.py", line 445, in train
+    super().train(self.start_iter, self.max_iter)
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/engine/train_loop.py", line 144, in train
+    self.after_train()
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/engine/train_loop.py", line 153, in after_train
+    h.after_train()
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/engine/hooks.py", line 81, in after_train
+    self._do_eval()
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/engine/hooks.py", line 40, in _do_eval
+    results = self._func()
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/engine/defaults.py", line 395, in test_and_save_results
+    self._last_eval_results = self.test(self.cfg, self.model)
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/engine/defaults.py", line 542, in test
+    data_loader = cls.build_test_loader(cfg, dataset_name)
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/engine/defaults.py", line 504, in build_test_loader
+    return build_detection_test_loader(cfg, dataset_name)
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/config/config.py", line 201, in wrapped
+    explicit_args = _get_args_from_config(from_config, *args, **kwargs)
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/config/config.py", line 238, in _get_args_from_config
+    ret = from_config_func(*args, **kwargs)
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/data/build.py", line 406, in _test_loader_from_config
+    else None,
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/data/build.py", line 229, in get_detection_dataset_dicts
+    dataset_dicts = [DatasetCatalog.get(dataset_name) for dataset_name in dataset_names]
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/data/build.py", line 229, in <listcomp>
+    dataset_dicts = [DatasetCatalog.get(dataset_name) for dataset_name in dataset_names]
+  File "/home/zhanglibin/packages/detectron2_repo/detectron2/data/catalog.py", line 58, in get
+    return f()
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/data/meta_pascal_voc.py", line 154, in <lambda>
+    name, dirname, split, thing_classes
+  File "/home/zhanglibin/workspace/FSOD/few-shot-object-detection/fsdet/data/meta_pascal_voc.py", line 52, in load_filtered_voc_instances
+    os.path.join(dirname, "ImageSets", "Main", split + ".txt")
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/site-packages/fvcore/common/file_io.py", line 114, in open
+    path, mode, buffering=buffering, **kwargs
+  File "/home/zhanglibin/anaconda3/envs/pytorch/lib/python3.7/site-packages/iopath/common/file_io.py", line 387, in _open
+    opener=opener,
+FileNotFoundError: [Errno 2] No such file or directory: 'datasets/VOC2007/ImageSets/Main/test.txt'
+
